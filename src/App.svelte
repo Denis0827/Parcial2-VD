@@ -1,9 +1,47 @@
 <script>
   import * as d3 from "d3"
   import atletas from "/src/data/athletes.csv"
+  import personajes from "/src/data/personajes.json"
+  import { onMount } from 'svelte';
   // import atletas from "/src/data/athletes.json"
 
   console.log("atletas", atletas)
+
+  const imagenCasas = {
+    Gryffindor: "/public/images/gryffindor.svg",
+    Hufflepuff: "/public/images/hufflepuff.svg",
+    Ravenclaw: "/public/images/ravenclaw.svg",
+    Slytherin: "/public/images/slytherin.svg",
+  }
+
+  const imagenGenero = {
+    HombrePri: "/public/images/chico_pri.svg",
+    HombreSecu: "/public/images/chico_secu.svg",
+    MujerPri: "/public/images/chica_pri.svg",
+    MujerSecu: "/public/images/chica_secu.svg",
+  }
+
+  const imagenMascotas = {
+    Gato: "/public/images/gato.svg",
+    Lechuza: "/public/images/lechuza.svg",
+    Sapo: "/public/images/sapo.svg",
+    Rata: "/public/images/rata.svg",
+    Phoenix: "/public/images/phoenix.svg",
+  }
+
+  const imagenBando = "/public/images/sombrero.svg";
+
+  const imagenMagia = "/public/images/brillo.svg";
+
+  const imagenLibros = {
+    1: "/public/images/libro_uno.svg",
+    2: "/public/images/libro_dos.svg",
+    3: "/public/images/libro_tres.svg",
+    4: "/public/images/libro_cuatro.svg",
+    5: "/public/images/libro_cinco.svg",
+    6: "/public/images/libro_seis.svg",
+    7: "/public/images/libro_siete.svg", 
+  }
 
   /* 1. Escala para participaciones (cuantitativo > grosor) */
   const minMaxParticipations = d3.extent(atletas, (d) => d.participations)
@@ -67,73 +105,39 @@
       <!-- Fin iteración -->
 
     </div>
+    <div class="catalogo-container">
+        <!-- Iteramos la data para visualizar c/ entidad -->
+        {#each personajes as personaje}
+          <div class="personaje-container superpuesto">
+
+            {#if personaje.genero == "Hombre"}
+              {#if personaje.protagonismo == "Principal"}
+                <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+              {:else}
+                <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+              {/if}
+            {:else}
+              {#if personaje.protagonismo == "Principal"}
+                <img class="personaje" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+              {:else}
+                <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+              {/if}
+            {/if}
+
+            <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
+            
+            {#if personaje.tiene_mascota}
+              <img src={imagenMascotas[personaje.mascota]} alt="Mascota" />
+            {/if}
+
+            <img src={imagenLibros[personaje.libros]} alt="Libros" />
+
+            <img src={imagenBando} alt="Bando" />
+
+          </div>
+        {/each}
+      <!-- Fin iteración -->
+    </div>
+
 </main>
 
-<style>
-  .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 20px;
-    margin-bottom: 80px;
-  }
-  .headline {
-    font-size: 40px;
-    font-weight: 300;
-    line-height: 1.2;
-    text-align: center;
-    margin: 20px;
-  }
-  .bajada {
-    font-size: 24px;
-    font-weight: 300;
-    text-align: center;
-    margin: 10px;
-  }
-  .headline b {
-    display: block;
-  }
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    margin: auto;
-    flex-wrap: wrap;
-    max-width: 1020px;
-    gap: 30px;
-    margin-bottom: 100px;
-  }
-  .person-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    flex: 180px 0 0;
-  }
-  .person {
-    width: 100px;
-    height: 100px;
-    border: 10px solid black;
-    border-radius: 50%;
-    box-sizing: border-box;
-    background-color: pink;
-  }
-  .nombre {
-    font-size: 13px;
-    font-weight: bold;
-    line-height: 1;
-    text-transform: uppercase;
-    margin: 0;
-    margin-top: 8px;
-  }
-  .deporte {
-    font-size: 14px;
-    color: #666;
-    margin: 0;
-  }
-  .referencias {
-    margin-top: 50px;
-    margin-bottom: 20px;
-  }
-</style>
