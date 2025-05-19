@@ -7,6 +7,7 @@
     margin-top: 20px;
     margin-bottom: 80px;
 }
+
 .headline {
     font-size: 40px;
     font-weight: 300;
@@ -14,15 +15,18 @@
     text-align: center;
     margin: 20px;
 }
+
 .bajada {
     font-size: 24px;
     font-weight: 300;
     text-align: center;
     margin: 10px;
 }
+
 .headline b {
     display: block;
 }
+
 .container {
     display: flex;
     justify-content: center;
@@ -34,50 +38,138 @@
     margin-bottom: 100px;
 }
 
-.catalogo-container {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    margin: auto;
-    flex-wrap: wrap;
-    max-width: 1020px;
-    gap: 480px 80px;
-    margin-top: 400px;
-    margin-bottom: 100px;
+.book-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
 }
 
+.book-background {
+  width: 100%;
+  display: block;
+}
 
-.personaje-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    flex: 180px 0 0;
+.book-pages {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  height: 70%;
+  display: flex;
+}
+
+.book-page {
+  flex: 1;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.left-page {
+  margin-right: 5px;
+}
+
+.right-page {
+  margin-left: 5px;
+}
+
+.catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px 80px;
+    grid-auto-rows: 525px; 
+    align-items: flex-end;
+    max-width: 1020px;
+    margin: auto;
 }
 
 .superpuesto {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+    position: relative;
+    width: 180px;
+    height: 515px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .personaje {
     position: absolute;
-    top: 0;
-    left: 0; 
     z-index: 1;
 }
 
 .casa {
-  position: absolute;
-  top: 73px;
-  left: 12px;
-  width: 165px;   
-  height: 165px;
-  z-index: 2;
+    position: absolute;
+    top: 134px;
+    left: 25px;
+    width: 160px;   
+    height: 160px;
+    z-index: 2;
+}
+
+.sombrero {
+    position: absolute;
+    top: 0;
+    left: 58px;
+    width: 90px;   
+    height: 90px;
+    z-index: 2;
+}
+
+.libros {
+    position: static; 
+    margin-bottom: 0;   
+    margin-right: -155px; 
+    left: auto;
+    top: auto;
+}
+
+.gato {
+    position: absolute;
+    top: 335px;
+    left: 0px;
+    z-index: 0;
+}
+
+.phoenix {
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    z-index: 0;
+    width: 160px;
+    height: 160px;
+}
+
+.lechuza {
+    position: absolute;
+    top: 50px;
+    left: 120px;
+    transform: scaleX(-1); 
+    z-index: 0;
+    width: 95px;
+    height: 95px;
+}
+
+.rata {
+    position: absolute;
+    top: 110px;
+    left: 118px;
+    z-index: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.sapo {
+    position: absolute;
+    top: 113px;
+    left: 118px;
+    z-index: 0;
+    width: 50px;
+    height: 50px;
+    transform: rotate(25deg);
 }
 
 
@@ -89,6 +181,7 @@
     box-sizing: border-box;
     background-color: pink;
 }
+
 .nombre {
     font-size: 13px;
     font-weight: bold;
@@ -97,11 +190,13 @@
     margin: 0;
     margin-top: 8px;
 }
+
 .deporte {
     font-size: 14px;
     color: #666;
     margin: 0;
 }
+
 .referencias {
     margin-top: 50px;
     margin-bottom: 20px;
