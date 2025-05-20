@@ -1,4 +1,5 @@
 
+
 .header {
     display: flex;
     justify-content: center;
@@ -41,103 +42,103 @@
 .book-container {
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  margin: 20px auto;
+  max-width: 100vw;
 }
 
 .book-background {
-  width: 100%;
-  display: block;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
 }
 
 .book-pages {
   position: absolute;
   top: 15%;
   left: 10%;
-  width: 80%;
+  width: 75%;
   height: 70%;
   display: flex;
+  margin: 10vh 8vw;
+
 }
 
 .book-page {
-  flex: 1;
-  padding: 20px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 50px);
   grid-template-rows: repeat(2, 1fr);
   gap: 10px;
+  margin-left: 4vw;
 }
 
-.left-page {
-  margin-right: 5px;
-}
 
-.right-page {
-  margin-left: 5px;
-}
-
-.catalogo-container {
+.catalogo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 40px 80px;
-    grid-auto-rows: 525px; 
+    grid-template-columns: repeat(auto-fit, minmax(45px, 190px));
+    gap: 5px 13px;
+    grid-auto-rows: 438px;
     align-items: flex-end;
-    max-width: 1020px;
-    margin: auto;
+    max-width: 50vw;
 }
 
-.superpuesto {
-    position: relative;
-    width: 180px;
-    height: 515px; 
+.personaje-container {
+    width: 100px;
+    height: 250px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
 }
 
+.superpuesto {
+    position: relative;
+}
+
 .personaje {
     position: absolute;
     z-index: 1;
+    width: 32vw;
+    height: 28vh;
 }
 
 .casa {
     position: absolute;
-    top: 134px;
-    left: 25px;
-    width: 160px;   
-    height: 160px;
+    top: 9.2vh;
+    left: 1.5vw;
+    width: 70px;   
+    height: 70px;
     z-index: 2;
 }
 
 .sombrero {
     position: absolute;
-    top: 0;
-    left: 58px;
-    width: 90px;   
-    height: 90px;
+    top: 1.2vh;
+    left: 2.55vw;
+    width: 2.5vw;   
     z-index: 2;
 }
 
 .libros {
     position: static; 
     margin-bottom: 0;   
-    margin-right: -155px; 
+    margin-right: -85px; 
     left: auto;
     top: auto;
+    width: 3vw;
 }
 
 .gato {
     position: absolute;
-    top: 335px;
+    top: 21vh;
     left: 0px;
     z-index: 0;
+    width: 6vw;
 }
 
 .phoenix {
     position: absolute;
-    top: 20px;
-    left: 100px;
+    top: 0;
+    left: 4.5vw;
     z-index: 0;
     width: 160px;
     height: 160px;
@@ -145,33 +146,36 @@
 
 .lechuza {
     position: absolute;
-    top: 50px;
-    left: 120px;
+    top: 3.5vh;
+    left: 5vw;
     transform: scaleX(-1); 
     z-index: 0;
-    width: 95px;
-    height: 95px;
+    width: 60px;
 }
 
 .rata {
     position: absolute;
-    top: 110px;
-    left: 118px;
+    top: 6.7vh;
+    left: 4vw;
     z-index: 0;
-    width: 50px;
-    height: 50px;
+    width: 30px;
 }
 
 .sapo {
     position: absolute;
-    top: 113px;
-    left: 118px;
+    top: 7.7vh;
+    left: 4.2vw;
     z-index: 0;
-    width: 50px;
-    height: 50px;
+    width: 30px;
     transform: rotate(25deg);
 }
 
+.nombre-personaje {
+    text-align: center;
+    padding: 0 80px 0 0;
+    font-size: 12px;
+    font-weight: bold;
+}
 
 .person {
     width: 100px;

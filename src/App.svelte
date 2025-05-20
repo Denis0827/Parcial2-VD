@@ -113,79 +113,126 @@
   <div class="header">
     <h1>Catálogo de Personajes de Harry Potter</h1>
   </div>
-
+  
   <div class="book-container">
+    
     <!-- Imagen del libro como fondo -->
     <img src="/public/images/librofondo.jpeg" alt="Libro abierto" class="book-background">
       <div class="book-pages">
       <!-- Página izquierda -->
-      <div class="book-page left-page">
+      <div class="catalogo book-page">
         {#each personajesIzquierda as personaje}
-          <div class="personaje-container">
-            <!-- Imagen de personaje según género y protagonismo -->
-            {#if personaje.genero == "Hombre"}
-              {#if personaje.protagonismo == "Principal"}
-                <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+          <div>
+            <div class="personaje-container superpuesto">
+              {#if personaje.genero == "Hombre"}
+                {#if personaje.protagonismo == "Principal"}
+                  <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+                {:else}
+                  <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+                  
+                {/if}
               {:else}
-                <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+                {#if personaje.protagonismo == "Principal"}
+                  <img class="personaje" style="left: 8px;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+                {:else}
+                  <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+                {/if}
               {/if}
-            {:else}
-              {#if personaje.protagonismo == "Principal"}
-                <img class="personaje" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+
+              {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
+                <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando} alt="Bando" />
+                <img class="libros" style="margin-right: -6vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
+                <img class="casa" style="left: 1.75vw; top: 10.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+              {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
+                <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando} alt="Bando" />
+                <img class="libros" style="margin-right: -5vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
+                <img class="casa" style="left: 1.4vw; top: 11.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
               {:else}
-                <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+                <img class="sombrero" src={imagenBando} alt="Bando" />
+                <img class="libros" src={imagenLibros[personaje.libros]} alt="Libros" />
+                <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
               {/if}
-            {/if}
 
-            <!-- Imagen de la casa -->
-            <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
-            
-            <!-- Mascota, si tiene -->
-            {#if personaje.tiene_mascota}
-              <img class="mascota" src={imagenMascotas[personaje.mascota]} alt="Mascota" />
-            {/if}
+              {#if personaje.mascota == "Gato"}
+                <img class="gato" src={imagenMascotas["Gato"]} alt="Gato" />
+              {:else if personaje.mascota == "Lechuza"}
+                <img class="lechuza" src={imagenMascotas["Lechuza"]} alt="Lechuza" />
+              {:else if personaje.mascota == "Sapo"}
+                <img class="sapo" src={imagenMascotas["Sapo"]} alt="Sapo" />
+              {:else if personaje.mascota == "Rata"}
+                {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
+                  <img class="rata" style="top: 8.2vh;" src={imagenMascotas["Rata"]} alt="Rata" />
+                {:else}
+                  <img class="rata" src={imagenMascotas["Rata"]} alt="Rata" />
+                {/if}
+              {:else}
+                <img class="phoenix" src={imagenMascotas["Phoenix"]} alt="Phoenix" />
+              {/if}
+            </div>
 
-            <!-- Libros en los que aparece -->
-            <img class="libros" src={imagenLibros[personaje.libros]} alt="Libros" />
+            <div class="nombre-personaje">
+              <p>{personaje.personaje}</p>
+            </div>
 
-            <!-- Indicador de bando -->
-            <img class="bando" src={imagenBando} alt="Bando" />
           </div>
         {/each}
       </div>
       
       <!-- Página derecha -->
-      <div class="book-page right-page">
+      <div class="catalogo book-page">
         {#each personajesDerecha as personaje}
-          <div class="personaje-container">
-            <!-- Imagen de personaje según género y protagonismo -->
-            {#if personaje.genero == "Hombre"}
-              {#if personaje.protagonismo == "Principal"}
-                <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+          <div>
+            <div class="personaje-container superpuesto">
+              {#if personaje.genero == "Hombre"}
+                {#if personaje.protagonismo == "Principal"}
+                  <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+                {:else}
+                  <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+                  
+                {/if}
               {:else}
-                <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+                {#if personaje.protagonismo == "Principal"}
+                  <img class="personaje" style="left: 8px;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+                {:else}
+                  <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+                {/if}
               {/if}
-            {:else}
-              {#if personaje.protagonismo == "Principal"}
-                <img class="personaje" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+
+              {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
+                <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando} alt="Bando" />
+                <img class="libros" style="margin-right: -6vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
+                <img class="casa" style="left: 1.75vw; top: 10.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+              {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
+                <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando} alt="Bando" />
+                <img class="libros" style="margin-right: -5vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
+                <img class="casa" style="left: 1.4vw; top: 11.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
               {:else}
-                <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+                <img class="sombrero" src={imagenBando} alt="Bando" />
+                <img class="libros" src={imagenLibros[personaje.libros]} alt="Libros" />
+                <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
               {/if}
-            {/if}
 
-            <!-- Imagen de la casa -->
-            <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
-            
-            <!-- Mascota, si tiene -->
-            {#if personaje.tiene_mascota}
-              <img class="mascota" src={imagenMascotas[personaje.mascota]} alt="Mascota" />
-            {/if}
+              {#if personaje.mascota == "Gato"}
+                <img class="gato" src={imagenMascotas["Gato"]} alt="Gato" />
+              {:else if personaje.mascota == "Lechuza"}
+                <img class="lechuza" src={imagenMascotas["Lechuza"]} alt="Lechuza" />
+              {:else if personaje.mascota == "Sapo"}
+                <img class="sapo" src={imagenMascotas["Sapo"]} alt="Sapo" />
+              {:else if personaje.mascota == "Rata"}
+                {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
+                  <img class="rata" style="top: 8.2vh;" src={imagenMascotas["Rata"]} alt="Rata" />
+                {:else}
+                  <img class="rata" src={imagenMascotas["Rata"]} alt="Rata" />
+                {/if}
+              {:else}
+                <img class="phoenix" src={imagenMascotas["Phoenix"]} alt="Phoenix" />
+              {/if}
+            </div>
 
-            <!-- Libros en los que aparece -->
-            <img class="libros" src={imagenLibros[personaje.libros]} alt="Libros" />
+            <div class="nombre-personaje">
+              <p>{personaje.personaje}</p>
+            </div>
 
-            <!-- Indicador de bando -->
-            <img class="bando" src={imagenBando} alt="Bando" />
           </div>
         {/each}
       </div>
@@ -196,6 +243,7 @@
 
   <div class="catalogo-container">
       <!-- Iteramos la data para visualizar c/ entidad -->
+       <!--
       {#each personajes as personaje}
         <div class="personaje-container superpuesto">
 
@@ -243,6 +291,7 @@
 
         </div>
       {/each}
+  -->
     <!-- Fin iteración -->
   </div>
 
