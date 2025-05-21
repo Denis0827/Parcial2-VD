@@ -132,8 +132,8 @@
 }
 
 .personaje-container {
-  width: 100px;
-  height: 250px;
+  width: 6rem;
+  height: 15.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
