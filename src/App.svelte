@@ -5,12 +5,8 @@
 
 <script>
   import * as d3 from "d3"
-  import atletas from "/src/data/athletes.csv"
   import personajes from "/src/data/personajes.json"
   import { onMount } from 'svelte';
-  // import atletas from "/src/data/athletes.json"
-
-  console.log("atletas", atletas)
 
   const imagenCasas = {
     Gryffindor: "/images/gryffindor.svg",
@@ -34,7 +30,10 @@
     Phoenix: "/images/phoenix.svg",
   }
 
-  const imagenBando = "/images/sombrero.svg";
+  const imagenBando = {
+    Bueno: "/images/bueno.svg",
+    Malo: "/images/malo.svg",
+  }
 
   const imagenMagia = "/images/brillo.svg";
 
@@ -47,7 +46,11 @@
     6: "/images/libro_seis.svg",
     7: "/images/libro_siete.svg", 
   }
-
+  
+  const luminosidadBrillo = d3.scaleLinear()
+    .domain([1, 3])
+    .range([0.3, 1]);
+  
   let codigos = {
     codHombre: true,
     codMujer: true,
@@ -277,51 +280,64 @@
 <body>
   <main>    
 
-<div class="home">
-      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--color_nav);">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="/images/logo.png" alt="Logo" width="120px" height="24">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Representación</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Codificación</a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+  <div class="home" id="home">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: var(--color_nav); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+      <div style="padding-left: 30px; display: flex; gap: 20px;" class="container-fluid">
+        <a class="navbar-brand" href="#home">
+          <img src="/images/logo.png" alt="Logo" width="120px" height="20">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#representacion">Representación</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#codificacion">Codificación</a>
+            </li>
+          </ul>
+          <!-- Texto a la derecha -->
+          <span style="padding-right: 30px;" class="navbar-text ms-auto d-none d-lg-block">
+            Marcas y Canales | Visualización de Datos
+          </span>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="contenedor">
       <img src="/images/fondo.jpg" alt="Fondo" class="fondo" />
-      
-    </div>
+      <div class="texto-superpuesto">
+        <h1 style="font-family: 'HarryPotter'; font-size: 51px;">Bienvenidos a Hogwarts</h1>
+        <h2 style="font-size: 27px;">¿Cuánto conoces de nuestros personajes?</h2>
+        <p class="scroll-indicador" style="font-size: 20px; font-weight: bold;">⬇ Scrollea para empezar la visualización</p>
+      </div>
+    </div>  
+
+  </div>
 
     <div class="bajada color-fondo">
       <img src="/images/banderas.png" width="300" alt="banderas">
       <div>
         <h2 style="font-family: 'HarryPotter'; font-size: 45px;">Descubre tu casa de <br> Hogwarts</h2>
         <button class="boton">
-          <a href="https://www.harrypotter.com/es/sorting-hat" 
+          <a href="https://www.harrypotter.com/es/sorting-hat" target="_blank"
           style="text-decoration: none; color: white;">Completar Quizz</a>
         </button>
       </div>
     </div>
+
+    <div style="padding: 2rem;" id="representacion" class="color-fondo">
+    </div>
                 
-    <div class="book-container">
+    <div class="book-container" >
       <div id="libro-animado2"> </div>
 
       <!-- Imagen del libro como fondo -->
@@ -337,29 +353,67 @@
                 <div class="personaje-container superpuesto">
                   {#if personaje.genero == "Hombre"}
                     {#if personaje.protagonismo == "Principal"}
-                      <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-principal-hombre" 
+                        src={imagenMagia} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
                     {:else}
-                      <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
-                      
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-secundario-hombre" 
+                        src={imagenMagia} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
                     {/if}
                   {:else}
                     {#if personaje.protagonismo == "Principal"}
-                      <img class="personaje" style="left: 8px;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" style="left: 8px;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-principal-mujer" 
+                        src={imagenMagia} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
                     {:else}
-                      <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-secundario-mujer" 
+                        src={imagenMagia} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
                     {/if}
                   {/if}
-
                   {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
-                    <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando} alt="Bando" />
+                    {#if personaje.bando == "Bueno"}
+                      <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando["Bueno"]} alt="Bando" />
+                    {:else}
+                      <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando["Malo"]} alt="Bando" />
+                    {/if}
                     <img class="libros" style="margin-right: -6vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
                     <img class="casa" style="left: 1.75vw; top: 10.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
                   {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
-                    <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando} alt="Bando" />
+                    {#if personaje.bando == "Bueno"}
+                      <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando["Bueno"]} alt="Bando" />
+                    {:else}
+                      <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando["Malo"]} alt="Bando" />
+                    {/if}
                     <img class="libros" style="margin-right: -5vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
                     <img class="casa" style="left: 1.4vw; top: 11.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
                   {:else}
-                    <img class="sombrero" src={imagenBando} alt="Bando" />
+                    {#if personaje.bando == "Bueno"}
+                      <img class="sombrero" src={imagenBando["Bueno"]} alt="Bando" />
+                    {:else}
+                      <img class="sombrero" src={imagenBando["Malo"]} alt="Bando" />
+                    {/if}
                     <img class="libros" src={imagenLibros[personaje.libros]} alt="Libros" />
                     <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
                   {/if}
@@ -396,29 +450,67 @@
                 <div class="personaje-container superpuesto">
                   {#if personaje.genero == "Hombre"}
                     {#if personaje.protagonismo == "Principal"}
-                      <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-principal-hombre" 
+                        src={imagenMagia} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
                     {:else}
-                      <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
-                      
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-secundario-hombre" 
+                        src={imagenMagia} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
                     {/if}
                   {:else}
                     {#if personaje.protagonismo == "Principal"}
-                      <img class="personaje" style="left: 8px;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" style="left: 8px;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-principal-mujer" 
+                        src={imagenMagia} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
                     {:else}
-                      <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-secundario-mujer" 
+                        src={imagenMagia} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
                     {/if}
                   {/if}
-
                   {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
-                    <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando} alt="Bando" />
+                    {#if personaje.bando == "Bueno"}
+                      <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando["Bueno"]} alt="Bando" />
+                    {:else}
+                      <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando["Malo"]} alt="Bando" />
+                    {/if}
                     <img class="libros" style="margin-right: -6vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
                     <img class="casa" style="left: 1.75vw; top: 10.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
                   {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
-                    <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando} alt="Bando" />
+                    {#if personaje.bando == "Bueno"}
+                      <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando["Bueno"]} alt="Bando" />
+                    {:else}
+                      <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando["Malo"]} alt="Bando" />
+                    {/if}
                     <img class="libros" style="margin-right: -5vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
                     <img class="casa" style="left: 1.4vw; top: 11.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
                   {:else}
-                    <img class="sombrero" src={imagenBando} alt="Bando" />
+                    {#if personaje.bando == "Bueno"}
+                      <img class="sombrero" src={imagenBando["Bueno"]} alt="Bando" />
+                    {:else}
+                      <img class="sombrero" src={imagenBando["Malo"]} alt="Bando" />
+                    {/if}
                     <img class="libros" src={imagenLibros[personaje.libros]} alt="Libros" />
                     <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
                   {/if}
@@ -451,7 +543,7 @@
         </div>
     </div>
 
-    <div class="codificacion-container color-fondo">
+    <div class="codificacion-container color-fondo" id="codificacion">
       <h1 class="cod-titulo">Codificación de las marcas</h1>
       <div class="cod-fila">
 
@@ -519,7 +611,7 @@
               <img style="height: 21.5vh; opacity: 0.2;" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
             {/if}
             {#if codigos.codMuerto}
-              <img style="height: 20vh;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+              <img style="height: 20vh;" class="personaje-fantasma" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
             {:else}
               <img style="height: 20vh; opacity: 0.2;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
             {/if}
@@ -583,14 +675,14 @@
         <div class="cod">
           <div>
             {#if codigos.codBueno}
-              <img style="height: 14vh;" src={imagenBando} alt="Bueno" />
+              <img style="height: 14vh;" src={imagenBando["Bueno"]} alt="Bueno" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenBando} alt="Bueno" />
+              <img style="height: 14vh; opacity: 0.2;" src={imagenBando["Malo"]} alt="Bueno" />
             {/if}
             {#if codigos.codMalo}
-              <img style="height: 14vh;" src={imagenBando} alt="Malo" />
+              <img style="height: 14vh;" src={imagenBando["Malo"]} alt="Malo" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenBando} alt="Malo" />
+              <img style="height: 14vh; opacity: 0.2;" src={imagenBando["Bueno"]} alt="Malo" />
             {/if}
           </div>
 
@@ -609,17 +701,17 @@
         <div class="cod">
           <div>
             {#if codigos.codAlto}
-              <img style="height: 14vh;" src={imagenMagia} alt="Alto" />
+              <img style="height: 14vh; opacity: {luminosidadBrillo(1)}" src={imagenMagia} alt="Alto" />
             {:else}
               <img style="height: 14vh; opacity: 0.2;" src={imagenMagia} alt="Alto" />
             {/if}
             {#if codigos.codMedio}
-              <img style="height: 14vh; opacity: 0.6" src={imagenMagia} alt="Medio" />
+              <img style="height: 14vh; opacity: {luminosidadBrillo(2)}" src={imagenMagia} alt="Medio" />
             {:else}
               <img style="height: 14vh; opacity: 0.2;" src={imagenMagia} alt="Medio" />
             {/if}
             {#if codigos.codBajo}
-              <img style="height: 14vh; opacity: 0.35" src={imagenMagia} alt="Bajo" />
+              <img style="height: 14vh; opacity: {luminosidadBrillo(3)}" src={imagenMagia} alt="Bajo" />
             {:else}
               <img style="height: 14vh; opacity: 0.2;" src={imagenMagia} alt="Bajo" />
             {/if}
@@ -631,11 +723,11 @@
 
           <div style="margin-top: -8px;" class="btn-group" role="group" aria-label="Basic outlined example">
             <button on:click={() => mostrarSolo(["codAlto"], ["codMedio", "codBajo"])} 
-              style="font-size: 14px;" type="button" class="btn btn-outline-primary">Alto</button>
+              style="font-size: 14px;" type="button" class="btn btn-outline-primary">1</button>
             <button on:click={() => mostrarSolo(["codMedio"], ["codAlto", "codBajo"])} 
-              style="font-size: 14px;" type="button" class="btn btn-outline-primary">Medio</button>
+              style="font-size: 14px;" type="button" class="btn btn-outline-primary">2</button>
             <button on:click={() => mostrarSolo(["codBajo"], ["codMedio", "codAlto"])} 
-              style="font-size: 14px;" type="button" class="btn btn-outline-primary">Bajo</button>
+              style="font-size: 14px;" type="button" class="btn btn-outline-primary">3</button>
           </div>
         </div>
       </div>
