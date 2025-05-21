@@ -281,7 +281,7 @@
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--color_nav);">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img src="/public/images/logo.png" alt="Logo" width="120px" height="24">
+            <img src="/images/logo.png" alt="Logo" width="120px" height="24">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
