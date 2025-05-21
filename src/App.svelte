@@ -329,7 +329,7 @@
         <h2 style="font-family: 'HarryPotter'; font-size: 45px;">Descubre tu casa de <br> Hogwarts</h2>
         <button class="boton">
           <a href="https://www.harrypotter.com/es/sorting-hat" target="_blank"
-          style="text-decoration: none; color: white;">Completar Quizz</a>
+          style="text-decoration: none; color: white;">Completar Quiz</a>
         </button>
       </div>
     </div>
