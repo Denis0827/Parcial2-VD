@@ -1,6 +1,7 @@
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
 </head>
 
 <script>
@@ -13,40 +14,44 @@
   console.log("atletas", atletas)
 
   const imagenCasas = {
-    Gryffindor: "/public/images/gryffindor.svg",
-    Hufflepuff: "/public/images/hufflepuff.svg",
-    Ravenclaw: "/public/images/ravenclaw.svg",
-    Slytherin: "/public/images/slytherin.svg",
+    Gryffindor: "/images/gryffindor.svg",
+    Hufflepuff: "/images/hufflepuff.svg",
+    Ravenclaw: "/images/ravenclaw.svg",
+    Slytherin: "/images/slytherin.svg",
   }
 
   const imagenGenero = {
-    HombrePri: "/public/images/chico_pri.svg",
-    HombreSecu: "/public/images/chico_secu.svg",
-    MujerPri: "/public/images/chica_pri.svg",
-    MujerSecu: "/public/images/chica_secu.svg",
+    HombrePri: "/images/chico_pri.svg",
+    HombreSecu: "/images/chico_secu.svg",
+    MujerPri: "/images/chica_pri.svg",
+    MujerSecu: "/images/chica_secu.svg",
   }
 
   const imagenMascotas = {
-    Gato: "/public/images/gato.svg",
-    Lechuza: "/public/images/lechuza.svg",
-    Sapo: "/public/images/sapo.svg",
-    Rata: "/public/images/rata.svg",
-    Phoenix: "/public/images/phoenix.svg",
+    Gato: "/images/gato.svg",
+    Lechuza: "/images/lechuza.svg",
+    Sapo: "/images/sapo.svg",
+    Rata: "/images/rata.svg",
+    Phoenix: "/images/phoenix.svg",
   }
 
-  const imagenBando = "/public/images/sombrero.svg";
+  const imagenBando = "/images/sombrero.svg";
 
-  const imagenMagia = "/public/images/brillo.svg";
+  const imagenMagia = "/images/brillo.svg";
 
   const imagenLibros = {
-    1: "/public/images/libro_uno.svg",
-    2: "/public/images/libro_dos.svg",
-    3: "/public/images/libro_tres.svg",
-    4: "/public/images/libro_cuatro.svg",
-    5: "/public/images/libro_cinco.svg",
-    6: "/public/images/libro_seis.svg",
-    7: "/public/images/libro_siete.svg", 
+    1: "/images/libro_uno.svg",
+    2: "/images/libro_dos.svg",
+    3: "/images/libro_tres.svg",
+    4: "/images/libro_cuatro.svg",
+    5: "/images/libro_cinco.svg",
+    6: "/images/libro_seis.svg",
+    7: "/images/libro_siete.svg", 
   }
+
+  // Separar personajes en dos grupos para las páginas del libro
+  const personajesIzquierda = personajes.slice(0, 4);
+  const personajesDerecha = personajes.slice(4, 8);
 
   let codigos = {
     codHombre: true,
@@ -92,192 +97,34 @@
     }
   }
 
-  // Reorganizar todos los personajes en grupos de 8 (4 izquierda, 4 derecha)
-  const gruposPersonajes = [];
-  for (let i = 0; i < personajes.length; i += 8) {
-    gruposPersonajes.push({
-      izquierda: personajes.slice(i, i + 4),
-      derecha: personajes.slice(i + 4, i + 8)
-    });
-  }
-  
-  // Inicializar índice actual
-  let grupoActualIndex = 0;
+  /* 1. Escala para participaciones (cuantitativo > grosor) */
+  const minMaxParticipations = d3.extent(atletas, (d) => d.participations)
+  let grosorPartic = d3.scaleLinear()
+    .domain(minMaxParticipations).range([2, 18])
 
-  // Variables para controlar el scroll y las animaciones
-  let transitionInProgress = false;
-  let scrollDirection = null;
-  let lastScrollTime = 0;
-  const scrollDebounceTime = 150; // Tiempo mínimo entre transiciones
+  /* 2. Escala para medallas (cuantitativo > diámetro círculo) */
+  const maxMedallas = d3.max(atletas, (d) => d.medallas)
+  const diamMedallas = d3.scaleRadial()
+    .domain([0, maxMedallas]).range([0, 100])
 
-  // Función para detectar dirección del scroll
-  function handleScroll(event) {
-    const deltaY = event.deltaY || event.detail || -event.wheelDelta;
+  /* 3. Escala para genero (categórico > color) */
+  const colorGenero = d3.scaleOrdinal()
+    .domain(["F", "M"])
+    .range(["#F7DDBA", "#E4D9F2"])
 
-    const libroAbajo = document.getElementById('libro-animado');
-    const libroArriba = document.getElementById('libro-animado2');
-
-    const rectAbajo = libroAbajo.getBoundingClientRect();
-    const rectArriba = libroArriba.getBoundingClientRect();
-
-    const estaEnVistaAbajo = rectAbajo.top <= window.innerHeight && rectAbajo.bottom >= 0;
-    const estaEnVistaArriba = rectArriba.top <= window.innerHeight && rectArriba.bottom >= 0;
-
-    // Si no estamos en la zona correspondiente, NO seguimos
-    if (deltaY > 0 && !estaEnVistaAbajo) return;
-    if (deltaY < 0 && !estaEnVistaArriba) return;
-
-    // Si estamos al principio o final del grupo, permitimos scroll libre
-    if (grupoActualIndex === gruposPersonajes.length - 1 && deltaY > 0) return;
-    if (grupoActualIndex === 0 && deltaY < 0) return;
-
-    // Bloqueamos scroll manual
-    event.preventDefault();
-
-    // Transición en curso o scroll demasiado rápido
-    if (transitionInProgress) return;
-
-    const currentTime = Date.now();
-    if (currentTime - lastScrollTime < 300) return;
-    lastScrollTime = currentTime;
-
-    if (Math.abs(deltaY) < 10) return;
-
-    // Avanzar o retroceder
-    if (deltaY > 0 && grupoActualIndex < gruposPersonajes.length - 1) {
-      transitionToNextGroup();
-    } else if (deltaY < 0 && grupoActualIndex > 0) {
-      transitionToPreviousGroup();
-    }
-  }
-
-  // Función para transición al siguiente grupo
-  // Reemplaza las funciones de transición por estas versiones mejoradas:
-
-  function transitionToNextGroup() {
-    if (transitionInProgress) return;
-    transitionInProgress = true;
-    
-    // Aplicar animación de desvanecimiento
-    const personajeElements = document.querySelectorAll('.personaje-container');
-    personajeElements.forEach(el => {
-      el.classList.add('fade-out-left');
-      // Aseguramos que no hay otras clases de animación
-      el.classList.remove('fade-in-right', 'fade-out-up', 'fade-in-down');
-    });
-    
-    setTimeout(() => {
-      grupoActualIndex = (grupoActualIndex + 1) % gruposPersonajes.length;
-      
-      // Pequeño retraso para asegurar que el DOM se actualiza
-      setTimeout(() => {
-        const newPersonajeElements = document.querySelectorAll('.personaje-container');
-        newPersonajeElements.forEach(el => {
-          // Limpiar todas las clases de animación y aplicar la nueva
-          el.classList.remove('fade-out-left', 'fade-out-up', 'fade-in-down');
-          el.classList.add('fade-in-right');
-        });
-        
-        // Tiempo suficiente para completar la animación
-        setTimeout(() => {
-          newPersonajeElements.forEach(el => {
-            // Limpieza final de todas las clases de animación
-            el.classList.remove('fade-in-right', 'fade-out-left', 'fade-out-up', 'fade-in-down');
-          });
-          // Permitir que la siguiente transición ocurra solo después de completar todo
-          setTimeout(() => {
-            transitionInProgress = false;
-          }, 100);
-        }, 500);
-      }, 100);
-    }, 500);
-  }
-
-  function transitionToPreviousGroup() {
-    if (transitionInProgress) return;
-    transitionInProgress = true;
-    
-    // Aplicar animación de desvanecimiento
-    const personajeElements = document.querySelectorAll('.personaje-container');
-    personajeElements.forEach(el => {
-      el.classList.add('fade-out-up');
-      // Aseguramos que no hay otras clases de animación
-      el.classList.remove('fade-in-down', 'fade-out-left', 'fade-in-right');
-    });
-    
-    setTimeout(() => {
-      grupoActualIndex--;
-      
-      // Pequeño retraso para asegurar que el DOM se actualiza
-      setTimeout(() => {
-        const newPersonajeElements = document.querySelectorAll('.personaje-container');
-        newPersonajeElements.forEach(el => {
-          // Limpiar todas las clases de animación y aplicar la nueva
-          el.classList.remove('fade-out-up', 'fade-out-left', 'fade-in-right');
-          el.classList.add('fade-in-down');
-        });
-        
-        // Tiempo suficiente para completar la animación
-        setTimeout(() => {
-          newPersonajeElements.forEach(el => {
-            // Limpieza final de todas las clases de animación
-            el.classList.remove('fade-in-down', 'fade-out-up', 'fade-out-left', 'fade-in-right');
-          });
-          // Permitir que la siguiente transición ocurra solo después de completar todo
-          setTimeout(() => {
-            transitionInProgress = false;
-          }, 100);
-        }, 500);
-      }, 100);
-    }, 500);
-  }
-
-  // Navegar manualmente entre grupos con los botones
-  function navegarGrupo(direccion) {
-    if (transitionInProgress) return;
-    
-    if (direccion === 'anterior' && grupoActualIndex > 0) {
-      transitionToPreviousGroup();
-    } else if (direccion === 'siguiente' && grupoActualIndex < gruposPersonajes.length - 1) {
-      transitionToNextGroup();
-    }
-  }
-
-  // Configurar event listeners cuando el componente se monta
-  onMount(() => {
-    // Usar wheel event en lugar de scroll para mejor control
-    window.addEventListener('wheel', handleScroll, { passive: false });
-    
-    // También escuchar eventos de teclado para navegación con flechas
-    const handleKeyDown = (event) => {
-      if (event.key === 'ArrowDown' || event.key === 'PageDown') {
-        event.preventDefault();
-        if (grupoActualIndex < gruposPersonajes.length - 1) {
-          transitionToNextGroup();
-        }
-      } else if (event.key === 'ArrowUp' || event.key === 'PageUp') {
-        event.preventDefault();
-        if (grupoActualIndex > 0) {
-          transitionToPreviousGroup();
-        }
-      }
-    };
-    
-    window.addEventListener('keydown', handleKeyDown);
-    
-    // Limpiar event listeners cuando el componente se desmonta
-    return () => {
-      window.removeEventListener('wheel', handleScroll);
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  });
+  /* 4. Escala para continentes (categórico > color)   */
+  const colorContinentes = d3
+    .scaleOrdinal()
+    .domain(["América", "África", "Asia", "Europa", "Oceanía"])
+    .range(["#ed334e", "#000000", "#fbb132", "#009fe3", "#00963f"])
 
 </script>
 
 <body>
-  <main>    
-
-<div class="home">
+  <main>
+    
+    
+    <div class="home">
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--color_nav);">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -314,139 +161,138 @@
       <img src="/public/images/banderas.png" width="300" alt="banderas">
       <button><a href="https://www.harrypotter.com/es/sorting-hat">Descubre</a></button>
     </div>
-                
+    
     <div class="book-container">
-      <div id="libro-animado2"> </div>
-
+      
       <!-- Imagen del libro como fondo -->
-      <img src="/public/images/librofondo.jpeg" alt="Libro abierto" class="book-background">
-        
+      <img style="filter: brightness(0.8);" src="/public/images/librofondo.jpeg" alt="Libro abierto" class="book-background">
         <div class="book-pages">
-          <div style="margin-top: 80vh;" id="libro-animado"> </div>
-
-          <!-- Página izquierda -->
-          <div class="catalogo-container book-page">
-            {#each gruposPersonajes[grupoActualIndex].izquierda as personaje}
-              <div>
-                <div class="personaje-container superpuesto">
-                  {#if personaje.genero == "Hombre"}
-                    {#if personaje.protagonismo == "Principal"}
-                      <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
-                    {:else}
-                      <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
-                      
-                    {/if}
+        <!-- Página izquierda -->
+        <div class="catalogo-container book-page">
+          {#each personajesIzquierda as personaje}
+            <div>
+              <div class="personaje-container superpuesto">
+                {#if personaje.genero == "Hombre"}
+                  {#if personaje.protagonismo == "Principal"}
+                    <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
                   {:else}
-                    {#if personaje.protagonismo == "Principal"}
-                      <img class="personaje" style="left: 8px;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
-                    {:else}
-                      <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
-                    {/if}
+                    <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+                    
                   {/if}
+                {:else}
+                  {#if personaje.protagonismo == "Principal"}
+                    <img class="personaje" style="left: 8px;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+                  {:else}
+                    <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+                  {/if}
+                {/if}
 
+                {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
+                  <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando} alt="Bando" />
+                  <img class="libros" style="margin-right: -6vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
+                  <img class="casa" style="left: 1.75vw; top: 10.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+                {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
+                  <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando} alt="Bando" />
+                  <img class="libros" style="margin-right: -5vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
+                  <img class="casa" style="left: 1.4vw; top: 11.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+                {:else}
+                  <img class="sombrero" src={imagenBando} alt="Bando" />
+                  <img class="libros" src={imagenLibros[personaje.libros]} alt="Libros" />
+                  <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
+                {/if}
+
+                {#if personaje.mascota == "Gato"}
+                  <img class="gato" src={imagenMascotas["Gato"]} alt="Gato" />
+                {:else if personaje.mascota == "Lechuza"}
+                  <img class="lechuza" src={imagenMascotas["Lechuza"]} alt="Lechuza" />
+                {:else if personaje.mascota == "Sapo"}
+                  <img class="sapo" src={imagenMascotas["Sapo"]} alt="Sapo" />
+                {:else if personaje.mascota == "Rata"}
                   {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
-                    <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando} alt="Bando" />
-                    <img class="libros" style="margin-right: -6vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
-                    <img class="casa" style="left: 1.75vw; top: 10.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
-                  {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
-                    <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando} alt="Bando" />
-                    <img class="libros" style="margin-right: -5vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
-                    <img class="casa" style="left: 1.4vw; top: 11.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+                    <img class="rata" style="top: 8.2vh;" src={imagenMascotas["Rata"]} alt="Rata" />
                   {:else}
-                    <img class="sombrero" src={imagenBando} alt="Bando" />
-                    <img class="libros" src={imagenLibros[personaje.libros]} alt="Libros" />
-                    <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
+                    <img class="rata" src={imagenMascotas["Rata"]} alt="Rata" />
                   {/if}
-
-                  {#if personaje.mascota == "Gato"}
-                    <img class="gato" src={imagenMascotas["Gato"]} alt="Gato" />
-                  {:else if personaje.mascota == "Lechuza"}
-                    <img class="lechuza" src={imagenMascotas["Lechuza"]} alt="Lechuza" />
-                  {:else if personaje.mascota == "Sapo"}
-                    <img class="sapo" src={imagenMascotas["Sapo"]} alt="Sapo" />
-                  {:else if personaje.mascota == "Rata"}
-                    {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
-                      <img class="rata" style="top: 8.2vh;" src={imagenMascotas["Rata"]} alt="Rata" />
-                    {:else}
-                      <img class="rata" src={imagenMascotas["Rata"]} alt="Rata" />
-                    {/if}
-                  {:else if personaje.mascota == "Phoenix"}
-                    <img class="phoenix" src={imagenMascotas["Phoenix"]} alt="Phoenix" />
-                  {/if}
-                </div>
-
-                <div class="nombre-personaje">
-                  <p>{personaje.personaje}</p>
-                </div>
-
+                {:else}
+                  <img class="phoenix" src={imagenMascotas["Phoenix"]} alt="Phoenix" />
+                {/if}
               </div>
-            {/each}
-          </div>
 
-          <!-- Página derecha -->
-          <div class="catalogo-container book-page">
-            {#each gruposPersonajes[grupoActualIndex].derecha as personaje}
-              <div>
-                <div class="personaje-container superpuesto">
-                  {#if personaje.genero == "Hombre"}
-                    {#if personaje.protagonismo == "Principal"}
-                      <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
-                    {:else}
-                      <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
-                      
-                    {/if}
-                  {:else}
-                    {#if personaje.protagonismo == "Principal"}
-                      <img class="personaje" style="left: 8px;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
-                    {:else}
-                      <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
-                    {/if}
-                  {/if}
-
-                  {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
-                    <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando} alt="Bando" />
-                    <img class="libros" style="margin-right: -6vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
-                    <img class="casa" style="left: 1.75vw; top: 10.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
-                  {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
-                    <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando} alt="Bando" />
-                    <img class="libros" style="margin-right: -5vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
-                    <img class="casa" style="left: 1.4vw; top: 11.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
-                  {:else}
-                    <img class="sombrero" src={imagenBando} alt="Bando" />
-                    <img class="libros" src={imagenLibros[personaje.libros]} alt="Libros" />
-                    <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
-                  {/if}
-
-                  {#if personaje.mascota == "Gato"}
-                    <img class="gato" src={imagenMascotas["Gato"]} alt="Gato" />
-                  {:else if personaje.mascota == "Lechuza"}
-                    <img class="lechuza" src={imagenMascotas["Lechuza"]} alt="Lechuza" />
-                  {:else if personaje.mascota == "Sapo"}
-                    <img class="sapo" src={imagenMascotas["Sapo"]} alt="Sapo" />
-                  {:else if personaje.mascota == "Rata"}
-                    {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
-                      <img class="rata" style="top: 8.2vh;" src={imagenMascotas["Rata"]} alt="Rata" />
-                    {:else}
-                      <img class="rata" src={imagenMascotas["Rata"]} alt="Rata" />
-                    {/if}
-                  {:else if personaje.mascota == "Phoenix"}
-                    <img class="phoenix" src={imagenMascotas["Phoenix"]} alt="Phoenix" />
-                  {/if}
-                </div>
-
-                <div class="nombre-personaje">
-                  <p>{personaje.personaje}</p>
-                </div>
-
+              <div class="nombre-personaje">
+                <p>{personaje.personaje}</p>
               </div>
-            {/each}
-          </div>
 
+            </div>
+          {/each}
         </div>
+        
+        <!-- Página derecha -->
+        <div class="catalogo-container book-page">
+          {#each personajesDerecha as personaje}
+            <div>
+              <div class="personaje-container superpuesto">
+                {#if personaje.genero == "Hombre"}
+                  {#if personaje.protagonismo == "Principal"}
+                    <img class="personaje" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+                  {:else}
+                    <img class="personaje" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+                    
+                  {/if}
+                {:else}
+                  {#if personaje.protagonismo == "Principal"}
+                    <img class="personaje" style="left: 8px;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+                  {:else}
+                    <img class="personaje" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+                  {/if}
+                {/if}
+
+                {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
+                  <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando} alt="Bando" />
+                  <img class="libros" style="margin-right: -6vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
+                  <img class="casa" style="left: 1.75vw; top: 10.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+                {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
+                  <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando} alt="Bando" />
+                  <img class="libros" style="margin-right: -5vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
+                  <img class="casa" style="left: 1.4vw; top: 11.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+                {:else}
+                  <img class="sombrero" src={imagenBando} alt="Bando" />
+                  <img class="libros" src={imagenLibros[personaje.libros]} alt="Libros" />
+                  <img class="casa" src={imagenCasas[personaje.casa]} alt="Casa" />
+                {/if}
+
+                {#if personaje.mascota == "Gato"}
+                  <img class="gato" src={imagenMascotas["Gato"]} alt="Gato" />
+                {:else if personaje.mascota == "Lechuza"}
+                  <img class="lechuza" src={imagenMascotas["Lechuza"]} alt="Lechuza" />
+                {:else if personaje.mascota == "Sapo"}
+                  <img class="sapo" src={imagenMascotas["Sapo"]} alt="Sapo" />
+                {:else if personaje.mascota == "Rata"}
+                  {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
+                    <img class="rata" style="top: 8.2vh;" src={imagenMascotas["Rata"]} alt="Rata" />
+                  {:else}
+                    <img class="rata" src={imagenMascotas["Rata"]} alt="Rata" />
+                  {/if}
+                {:else}
+                  <img class="phoenix" src={imagenMascotas["Phoenix"]} alt="Phoenix" />
+                {/if}
+              </div>
+
+              <div class="nombre-personaje">
+                <p>{personaje.personaje}</p>
+              </div>
+
+            </div>
+          {/each}
+        </div>
+      </div>
+    </div>
+
+    <div class="header color-fondo">
+      <h1>Codificación</h1>
     </div>
 
     <div class="codificacion-container color-fondo">
-      <h1>Codificación</h1>
+
       <div class="cod-fila">
 
         <div class="cod">
@@ -711,7 +557,12 @@
       </div>
 
     </div>
+    
+    
+
   </main>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
+
+

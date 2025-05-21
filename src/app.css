@@ -1,42 +1,30 @@
+:root {
+  --color_nav: rgb(197, 164, 137);
+}
 
+.color-fondo {
+    background-color: #594535;
+}
 
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 20px;
-    margin-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 80px;
 }
 
-.headline {
-    font-size: 40px;
-    font-weight: 300;
-    line-height: 1.2;
-    text-align: center;
-    margin: 20px;
+.home {
+    position: relative;
+    height: 100vh; /* altura completa de la ventana */
+    overflow: hidden;
 }
 
-.bajada {
-    font-size: 24px;
-    font-weight: 300;
-    text-align: center;
-    margin: 10px;
-}
-
-.headline b {
-    display: block;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    margin: auto;
-    flex-wrap: wrap;
-    max-width: 1020px;
-    gap: 30px;
-    margin-bottom: 100px;
+.fondo {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
 }
 
 .book-container {
@@ -46,9 +34,9 @@
 }
 
 .book-background {
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 }
 
 .book-pages {
@@ -59,7 +47,6 @@
   height: 70%;
   display: flex;
   margin: -5vh 8vw;
-
 }
 
 .book-page {
@@ -70,176 +57,292 @@
   margin-left: 4vw;
 }
 
-
 .catalogo-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(45px, 190px));
-    gap: 5px 13px;
-    grid-auto-rows: 438px;
-    align-items: flex-end;
-    max-width: 50vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45px, 200px));
+  gap: 5px 13px;
+  grid-auto-rows: 438px;
+  align-items: flex-end;
+  max-width: 50vw;
 }
 
 .personaje-container {
-    width: 100px;
-    height: 250px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+  width: 100px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .superpuesto {
-    position: relative;
+  position: relative;
 }
 
 .personaje {
-    position: absolute;
-    z-index: 1;
-    width: 32vw;
-    height: 28vh;
+  position: absolute;
+  z-index: 1;
+  width: 32vw;
+  height: 28vh;
 }
 
 .casa {
-    position: absolute;
-    top: 9.2vh;
-    left: 1.5vw;
-    width: 70px;   
-    height: 70px;
-    z-index: 2;
+  position: absolute;
+  top: 9.2vh;
+  left: 1.5vw;
+  width: 70px;
+  height: 70px;
+  z-index: 2;
 }
 
 .sombrero {
-    position: absolute;
-    top: 1.2vh;
-    left: 2.55vw;
-    width: 2.5vw;   
-    z-index: 2;
+  position: absolute;
+  top: 1.2vh;
+  left: 2.55vw;
+  width: 2.5vw;
+  z-index: 2;
 }
 
 .libros {
-    position: static; 
-    margin-bottom: 0;   
-    margin-right: -85px; 
-    left: auto;
-    top: auto;
-    width: 3vw;
+  position: static;
+  margin-bottom: 0;
+  margin-right: -85px;
+  left: auto;
+  top: auto;
+  width: 3vw;
 }
 
 .gato {
-    position: absolute;
-    top: 21vh;
-    left: 0px;
-    z-index: 0;
-    width: 6vw;
+  position: absolute;
+  top: 21vh;
+  left: 0px;
+  z-index: 0;
+  width: 6vw;
 }
 
 .phoenix {
-    position: absolute;
-    top: 0;
-    left: 4.5vw;
-    z-index: 0;
-    width: 160px;
-    height: 160px;
+  position: absolute;
+  top: 0;
+  left: 4.5vw;
+  z-index: 0;
+  width: 160px;
+  height: 160px;
 }
 
 .lechuza {
-    position: absolute;
-    top: 3.5vh;
-    left: 5vw;
-    transform: scaleX(-1); 
-    z-index: 0;
-    width: 60px;
+  position: absolute;
+  top: 3.5vh;
+  left: 5vw;
+  transform: scaleX(-1);
+  z-index: 0;
+  width: 60px;
 }
 
 .rata {
-    position: absolute;
-    top: 6.7vh;
-    left: 4vw;
-    z-index: 0;
-    width: 30px;
+  position: absolute;
+  top: 6.7vh;
+  left: 4vw;
+  z-index: 0;
+  width: 30px;
 }
 
 .sapo {
-    position: absolute;
-    top: 7.7vh;
-    left: 4.2vw;
-    z-index: 0;
-    width: 30px;
-    transform: rotate(25deg);
+  position: absolute;
+  top: 7.7vh;
+  left: 4.2vw;
+  z-index: 0;
+  width: 30px;
+  transform: rotate(25deg);
 }
 
 .nombre-personaje {
-    text-align: center;
-    padding: 0 80px 0 0;
-    font-size: 12px;
-    font-weight: bold;
+  text-align: center;
+  padding: 0 80px 0 0;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .codificacion-container {
-    display: flex;
-    flex-direction: column;
-    gap: 6vh;
-    margin-top: 5vh;
-    margin-bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  gap: 6vh;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
 }
 
 .categoria-texto {
-    text-align: center;
-    font-weight: semi-bold;
-    font-size: 14px;
+  text-align: center;
+  font-weight: semi-bold;
+  font-size: 14px;
 }
 
 .cod-fila {
-    display: flex;
-    flex-direction: row;
-    gap: 7vw;
-    align-items: flex-end;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 7vw;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .cod-protagonismo-img {
-    display: flex; 
-    align-items: flex-end;
-    gap: 10px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
 }
 
 .cod {
-    display: flex; 
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .cod-mascotas-img {
-    display: flex; 
-    align-items: flex-end;
+  display: flex;
+  align-items: flex-end;
 }
 
-.person {
-    width: 100px;
-    height: 100px;
-    border: 10px solid black;
-    border-radius: 50%;
-    box-sizing: border-box;
-    background-color: pink;
+/* Animaciones para el libro */
+
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
 }
 
-.nombre {
-    font-size: 13px;
-    font-weight: bold;
-    line-height: 1;
-    text-transform: uppercase;
-    margin: 0;
-    margin-top: 8px;
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.deporte {
-    font-size: 14px;
-    color: #666;
-    margin: 0;
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
 }
 
-.referencias {
-    margin-top: 50px;
-    margin-bottom: 20px;
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+/* Asegura que todos los elementos mantienen su posición durante las animaciones */
+.personaje-container.fade-in-down,
+.personaje-container.fade-out-up,
+.personaje-container.fade-in-right,
+.personaje-container.fade-out-left {
+  position: relative;
+  z-index: 1;
+}
+
+/* Añade estas animaciones a tu sección de estilos */
+@keyframes fadeOutComplete {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInComplete {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-out-complete {
+  animation: fadeOutComplete 0.6s forwards;
+  position: relative !important;
+  z-index: 1;
+}
+
+.fade-in-complete {
+  animation: fadeInComplete 0.6s forwards;
+  position: relative !important;
+  z-index: 1;
+}
+
+/* Asegura que los elementos de personaje mantienen su estructura durante las animaciones */
+.personaje-container {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Evita problemas específicos con estos personajes */
+.personaje-container:has(.nombre-personaje p:contains("Parvati")),
+.personaje-container:has(.nombre-personaje p:contains("Pomona")) {
+  isolation: isolate;
+  contain: paint;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-out-up {
+  animation: fadeOut 0.5s forwards;
+}
+
+.fade-in-down {
+  animation: fadeIn 0.5s forwards;
+}
+
+.fade-out-left {
+  animation: fadeOut 0.5s forwards;
+}
+
+.fade-in-right {
+  animation: fadeIn 0.5s forwards;
+}    

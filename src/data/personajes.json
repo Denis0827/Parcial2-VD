@@ -227,6 +227,20 @@
     "bando": "Bueno",
     "libros": 4
   },
+
+  {
+    "personaje": "Minerva McGonagall",
+    "casa": "Gryffindor",
+    "protagonismo": "Secundario",
+    "tiene_mascota": false,
+    "mascota": "null ",
+    "vivo": true,
+    "nivel_magia": "Alto",
+    "genero": "Mujer",
+    "bando": "Bueno",
+    "libros": 7
+  },
+
   {
     "personaje": "Neville Longbottom",
     "casa": "Gryffindor",
@@ -263,6 +277,20 @@
     "bando": "Bueno",
     "libros": 6
   },
+
+  {
+    "personaje": "Pansy Parkinson",
+    "casa": "Slytherin",
+    "protagonismo": "Secundario",
+    "tiene_mascota": false,
+    "mascota": "null ",
+    "vivo": true,
+    "nivel_magia": "Medio",
+    "genero": "Mujer",
+    "bando": "Malo",
+    "libros": 5
+  },
+
   {
     "personaje": "Parvati Patil",
     "casa": "Gryffindor",

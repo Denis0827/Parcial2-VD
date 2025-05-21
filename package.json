@@ -17,6 +17,8 @@
     "@rollup/plugin-dsv": "^3.0.5",
     "@types/d3": "^7.4.3",
     "d3": "^7.8.5",
+    "gsap": "^3.13.0",
+    "locomotive-scroll": "^4.1.4",
     "vd_numeros_isotype": "file:"
   }
 }
