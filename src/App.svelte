@@ -14,38 +14,38 @@
 
   const imagenCasas = {
     Gryffindor: "/images/gryffindor.svg",
-    Hufflepuff: "/public/images/hufflepuff.svg",
-    Ravenclaw: "/public/images/ravenclaw.svg",
-    Slytherin: "/public/images/slytherin.svg",
+    Hufflepuff: "/images/hufflepuff.svg",
+    Ravenclaw: "/images/ravenclaw.svg",
+    Slytherin: "/images/slytherin.svg",
   }
 
   const imagenGenero = {
-    HombrePri: "/public/images/chico_pri.svg",
-    HombreSecu: "/public/images/chico_secu.svg",
-    MujerPri: "/public/images/chica_pri.svg",
-    MujerSecu: "/public/images/chica_secu.svg",
+    HombrePri: "/images/chico_pri.svg",
+    HombreSecu: "/images/chico_secu.svg",
+    MujerPri: "/images/chica_pri.svg",
+    MujerSecu: "/images/chica_secu.svg",
   }
 
   const imagenMascotas = {
-    Gato: "/public/images/gato.svg",
-    Lechuza: "/public/images/lechuza.svg",
-    Sapo: "/public/images/sapo.svg",
-    Rata: "/public/images/rata.svg",
-    Phoenix: "/public/images/phoenix.svg",
+    Gato: "/images/gato.svg",
+    Lechuza: "/images/lechuza.svg",
+    Sapo: "/images/sapo.svg",
+    Rata: "/images/rata.svg",
+    Phoenix: "/images/phoenix.svg",
   }
 
-  const imagenBando = "/public/images/sombrero.svg";
+  const imagenBando = "/images/sombrero.svg";
 
-  const imagenMagia = "/public/images/brillo.svg";
+  const imagenMagia = "/images/brillo.svg";
 
   const imagenLibros = {
-    1: "/public/images/libro_uno.svg",
-    2: "/public/images/libro_dos.svg",
-    3: "/public/images/libro_tres.svg",
-    4: "/public/images/libro_cuatro.svg",
-    5: "/public/images/libro_cinco.svg",
-    6: "/public/images/libro_seis.svg",
-    7: "/public/images/libro_siete.svg", 
+    1: "/images/libro_uno.svg",
+    2: "/images/libro_dos.svg",
+    3: "/images/libro_tres.svg",
+    4: "/images/libro_cuatro.svg",
+    5: "/images/libro_cinco.svg",
+    6: "/images/libro_seis.svg",
+    7: "/images/libro_siete.svg", 
   }
 
   let codigos = {
@@ -306,12 +306,12 @@
         </div>
       </nav>
 
-      <img src="/public/images/fondo.jpg" alt="Fondo" class="fondo" />
+      <img src="/images/fondo.jpg" alt="Fondo" class="fondo" />
       
     </div>
 
     <div class="bajada color-fondo">
-      <img src="/public/images/banderas.png" width="300" alt="banderas">
+      <img src="/images/banderas.png" width="300" alt="banderas">
       <div>
         <h2 style="font-family: 'HarryPotter'; font-size: 45px;">Descubre tu casa de <br> Hogwarts</h2>
         <button class="boton">
@@ -325,7 +325,7 @@
       <div id="libro-animado2"> </div>
 
       <!-- Imagen del libro como fondo -->
-      <img src="/public/images/librofondo.jpeg" alt="Libro abierto" class="book-background">
+      <img src="/images/librofondo.jpeg" alt="Libro abierto" class="book-background">
         
         <div class="book-pages">
           <div style="margin-top: 80vh;" id="libro-animado"> </div>
