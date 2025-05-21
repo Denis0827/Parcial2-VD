@@ -310,7 +310,7 @@
 .codificacion-container {
   display: flex;
   flex-direction: column;
-  gap: 6vh;
+  gap: 5vh;
   padding-top: 8vh;
   padding-bottom: 12vh;
 }
@@ -318,7 +318,7 @@
 .categoria-texto {
   text-align: center;
   font-weight: semi-bold;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .cod-titulo {

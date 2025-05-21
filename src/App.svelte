@@ -548,24 +548,21 @@
       <div class="cod-fila">
 
         <div class="cod">
+          <div><p class="categoria-texto"><b>Género</b></p></div>
           <div style="justify-content: center; display: flex;">
             {#if codigos.codHombre}
-              <img style="height: 20vh;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+              <img style="height: 14vh;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
             {:else}
-              <img style="height: 20vh; opacity: 0.2;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
             {/if}
             {#if codigos.codMujer}
-              <img style="height: 20vh;" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+              <img style="height: 14vh;" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
             {:else}
-              <img style="height: 20vh; opacity: 0.2;" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
             {/if}
           </div>
 
-          <div style="margin-top: 8px;">
-            <p class="categoria-texto"><b>Género</b> <br> Dato categórico | Canal: Símbolo</p>
-          </div>
-
-          <div style="margin-top: -8px;" class="btn-group" role="group" aria-label="Basic outlined example">
+          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
             <button on:click={() => mostrarSolo(["codHombre"], ["codMujer"])} 
               style="font-size: 14px;" type="button" class="btn btn-outline-primary">Hombre</button>
             <button on:click={() => mostrarSolo(["codMujer"], ["codHombre"])} 
@@ -574,28 +571,25 @@
         </div>
 
         <div class="cod">
+          <div><p class="categoria-texto"><b>Nivel de protagonismo</b></p></div>
           <div class="cod-protagonismo-img">
             {#if codigos.codPrincipal}
-              <img style="height: 21.5vh;" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
-              <img style="height: 22.5vh;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+              <img style="height: 14vh;" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+              <img style="height: 14vh;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
             {:else}
-              <img style="height: 21.5vh; opacity: 0.2;" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
-              <img style="height: 22.5vh; opacity: 0.2;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
+              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["MujerPri"]} alt="MujerPrincipal" />
             {/if}
             {#if codigos.codSecundario}
-              <img style="height: 20vh;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
-              <img style="height: 20vh;" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+              <img style="height: 14vh;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+              <img style="height: 14vh;" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
             {:else}
-              <img style="height: 20vh; opacity: 0.2;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
-              <img style="height: 20vh; opacity: 0.2;" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
+              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["MujerSecu"]} alt="MujerSecundaria" />
             {/if}
           </div>
 
-          <div style="margin-top: 8px;">
-            <p class="categoria-texto"><b>Nivel de protagonismo</b> <br> Dato categórico | Canal: Símbolo</p>
-          </div>
-
-          <div style="margin-top: -8px;" class="btn-group" role="group" aria-label="Basic outlined example">
+          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
             <button on:click={() => mostrarSolo(["codPrincipal"], ["codSecundario"])} 
               style="font-size: 14px;" type="button" class="btn btn-outline-primary">Principal</button>
             <button on:click={() => mostrarSolo(["codSecundario"], ["codPrincipal"])} 
@@ -604,24 +598,21 @@
         </div>
 
         <div class="cod">
+          <div><p class="categoria-texto"><b>Estado de vida</b></p></div>
           <div style="justify-content: center; display: flex; align-items: flex-end;">
             {#if codigos.codVivo}
-              <img style="height: 21.5vh;" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+              <img style="height: 14vh;" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
             {:else}
-              <img style="height: 21.5vh; opacity: 0.2;" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
+              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["HombrePri"]} alt="HombrePrincipal" />
             {/if}
             {#if codigos.codMuerto}
-              <img style="height: 20vh;" class="personaje-fantasma" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+              <img style="height: 14vh;" class="personaje-fantasma" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
             {:else}
-              <img style="height: 20vh; opacity: 0.2;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
+              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["HombreSecu"]} alt="HombreSecundario" />
             {/if}
           </div>
 
-          <div style="margin-top: 8px;">
-            <p class="categoria-texto"><b>Estado de vida</b> <br> Dato categórico | Canal: Símbolo</p>
-          </div>
-
-          <div style="margin-top: -8px;" class="btn-group" role="group" aria-label="Basic outlined example">
+          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
             <button on:click={() => mostrarSolo(["codVivo"], ["codMuerto"])} 
               style="font-size: 14px;" type="button" class="btn btn-outline-primary">Vivo</button>
             <button on:click={() => mostrarSolo(["codMuerto"], ["codVivo"])}
@@ -634,33 +625,30 @@
       <div class="cod-fila">
         <div class="cod">
           <div>
+            <div><p class="categoria-texto"><b>Casa</b></p></div>
             {#if codigos.codGryffindor}
-              <img style="height: 14vh;" src={imagenCasas["Gryffindor"]} alt="Gryffindor" />
+              <img style="height: 9vh;" src={imagenCasas["Gryffindor"]} alt="Gryffindor" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenCasas["Gryffindor"]} alt="Gryffindor" />
+              <img style="height: 9vh; opacity: 0.2;" src={imagenCasas["Gryffindor"]} alt="Gryffindor" />
             {/if}
             {#if codigos.codHufflepuff}
-              <img style="height: 14vh;" src={imagenCasas["Hufflepuff"]} alt="Hufflepuff" />
+              <img style="height: 9vh;" src={imagenCasas["Hufflepuff"]} alt="Hufflepuff" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenCasas["Hufflepuff"]} alt="Hufflepuff" />
+              <img style="height: 9vh; opacity: 0.2;" src={imagenCasas["Hufflepuff"]} alt="Hufflepuff" />
             {/if}
             {#if codigos.codRavenclaw}
-              <img style="height: 14vh;" src={imagenCasas["Ravenclaw"]} alt="Ravenclaw" />
+              <img style="height: 9vh;" src={imagenCasas["Ravenclaw"]} alt="Ravenclaw" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenCasas["Ravenclaw"]} alt="Ravenclaw" />
+              <img style="height: 9vh; opacity: 0.2;" src={imagenCasas["Ravenclaw"]} alt="Ravenclaw" />
             {/if}
             {#if codigos.codSlytherin}
-              <img style="height: 14vh;" src={imagenCasas["Slytherin"]} alt="Slytherin" />
+              <img style="height: 9vh;" src={imagenCasas["Slytherin"]} alt="Slytherin" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenCasas["Slytherin"]} alt="Slytherin" />
+              <img style="height: 9vh; opacity: 0.2;" src={imagenCasas["Slytherin"]} alt="Slytherin" />
             {/if}
           </div>
 
-          <div style="margin-top: 8px;">
-            <p class="categoria-texto"><b>Casa</b> <br> Dato categórico | Canal: Símbolo </p>
-          </div>
-
-          <div style="margin-top: -8px;" class="btn-group" role="group" aria-label="Basic outlined example">
+          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
             <button on:click={() => mostrarSolo(["codGryffindor"], ["codHufflepuff", "codRavenclaw", "codSlytherin"])}
               style="font-size: 14px;" type="button" class="btn btn-outline-primary">Gryffindor</button>
             <button on:click={() => mostrarSolo(["codHufflepuff"], ["codGryffindor", "codRavenclaw", "codSlytherin"])}
@@ -674,23 +662,20 @@
 
         <div class="cod">
           <div>
+            <div><p class="categoria-texto"><b>Bando</b></p></div>
             {#if codigos.codBueno}
-              <img style="height: 14vh;" src={imagenBando["Bueno"]} alt="Bueno" />
+              <img style="height: 9vh;" src={imagenBando["Bueno"]} alt="Bueno" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenBando["Malo"]} alt="Bueno" />
+              <img style="height: 9vh; opacity: 0.2;" src={imagenBando["Malo"]} alt="Bueno" />
             {/if}
             {#if codigos.codMalo}
-              <img style="height: 14vh;" src={imagenBando["Malo"]} alt="Malo" />
+              <img style="height: 9vh;" src={imagenBando["Malo"]} alt="Malo" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenBando["Bueno"]} alt="Malo" />
+              <img style="height: 9vh; opacity: 0.2;" src={imagenBando["Bueno"]} alt="Malo" />
             {/if}
           </div>
 
-          <div style="margin-top: 8px;">
-            <p class="categoria-texto"><b>Bando</b> <br> Dato categórico | Canal: Color </p>
-          </div>
-
-          <div style="margin-top: -8px;" class="btn-group" role="group" aria-label="Basic outlined example">
+          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
             <button on:click={() => mostrarSolo(["codBueno"], ["codMalo"])} 
               style="font-size: 14px;" type="button" class="btn btn-outline-primary">Bueno</button>
             <button on:click={() => mostrarSolo(["codMalo"], ["codBueno"])} 
@@ -700,28 +685,25 @@
 
         <div class="cod">
           <div>
+            <div><p class="categoria-texto"><b>Nivel de magia</b></p></div>
             {#if codigos.codAlto}
-              <img style="height: 14vh; opacity: {luminosidadBrillo(1)}" src={imagenMagia} alt="Alto" />
+              <img style="height: 9vh; opacity: {luminosidadBrillo(1)}" src={imagenMagia} alt="Alto" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenMagia} alt="Alto" />
+              <img style="height: 9vh; opacity: 0.2;" src={imagenMagia} alt="Alto" />
             {/if}
             {#if codigos.codMedio}
-              <img style="height: 14vh; opacity: {luminosidadBrillo(2)}" src={imagenMagia} alt="Medio" />
+              <img style="height: 9vh; opacity: {luminosidadBrillo(2)}" src={imagenMagia} alt="Medio" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenMagia} alt="Medio" />
+              <img style="height: 9vh; opacity: 0.2;" src={imagenMagia} alt="Medio" />
             {/if}
             {#if codigos.codBajo}
-              <img style="height: 14vh; opacity: {luminosidadBrillo(3)}" src={imagenMagia} alt="Bajo" />
+              <img style="height: 9vh; opacity: {luminosidadBrillo(3)}" src={imagenMagia} alt="Bajo" />
             {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenMagia} alt="Bajo" />
+              <img style="height: 9vh; opacity: 0.2;" src={imagenMagia} alt="Bajo" />
             {/if}
           </div>
 
-          <div style="margin-top: 8px;">
-            <p class="categoria-texto"><b>Nivel de magia</b> <br> Dato ordinal | Canal: Luminosidad </p>
-          </div>
-
-          <div style="margin-top: -8px;" class="btn-group" role="group" aria-label="Basic outlined example">
+          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
             <button on:click={() => mostrarSolo(["codAlto"], ["codMedio", "codBajo"])} 
               style="font-size: 14px;" type="button" class="btn btn-outline-primary">1</button>
             <button on:click={() => mostrarSolo(["codMedio"], ["codAlto", "codBajo"])} 
@@ -735,23 +717,20 @@
       <div class="cod-fila">
         <div class="cod">
           <div>
+            <div><p class="categoria-texto"><b>Apariciones en libros</b></p></div>
             {#if codigos.codUno}
-              <img style="height: 10vh;" src={imagenLibros[1]} alt="Uno" />
+              <img style="height: 7vh;" src={imagenLibros[1]} alt="Uno" />
             {:else}
-              <img style="height: 10vh; opacity: 0.2;" src={imagenLibros[1]} alt="Uno" />
+              <img style="height: 7vh; opacity: 0.2;" src={imagenLibros[1]} alt="Uno" />
             {/if}
             {#if codigos.codDos}
-              <img style="height: 10vh;" src={imagenLibros[2]} alt="Dos" />
+              <img style="height: 7vh;" src={imagenLibros[2]} alt="Dos" />
             {:else}
-              <img style="height: 10vh; opacity: 0.2;" src={imagenLibros[2]} alt="Dos" />
+              <img style="height: 7vh; opacity: 0.2;" src={imagenLibros[2]} alt="Dos" />
             {/if}
           </div>
 
-          <div style="margin-top: 8px;">
-            <p class="categoria-texto"><b>Apariciones en libro</b> <br> Dato cuantitativo | Canal: Altura </p>
-          </div>
-
-          <div style="margin-top: -8px;" class="btn-group" role="group" aria-label="Basic outlined example">
+          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
             <button on:click={() => mostrarSolo(["codUno"], ["codDos"])}
               style="font-size: 14px;" type="button" class="btn btn-outline-primary">Uno</button>
             <button on:click={() => mostrarSolo(["codDos"], ["codUno"])}
@@ -761,39 +740,39 @@
         </div>
 
         <div class="cod">
-          <div class="cod-mascotas-img">
-            {#if codigos.codLechuza}
-              <img style="height: 10vh;" src={imagenMascotas["Lechuza"]} alt="Lechuza" />
-            {:else}
-              <img style="height: 10vh; opacity: 0.2;" src={imagenMascotas["Lechuza"]} alt="Lechuza" />
-            {/if}
-            {#if codigos.codGato}
-              <img style="height: 15vh;" src={imagenMascotas["Gato"]} alt="Gato" />
-            {:else}
-              <img style="height: 15vh; opacity: 0.2;" src={imagenMascotas["Gato"]} alt="Gato" />
-            {/if}
-            {#if codigos.codSapo}
-              <img style="height: 5vh;" src={imagenMascotas["Sapo"]} alt="Sapo" />
-            {:else}
-              <img style="height: 5vh; opacity: 0.2;" src={imagenMascotas["Sapo"]} alt="Sapo" />
-            {/if}
-            {#if codigos.codRata}
-              <img style="height: 5vh;" src={imagenMascotas["Rata"]} alt="Rata" />
-            {:else}
-              <img style="height: 5vh; opacity: 0.2;" src={imagenMascotas["Rata"]} alt="Rata" />
-            {/if}
-            {#if codigos.codPhoenix}
-              <img style="height: 20vh;" src={imagenMascotas["Phoenix"]} alt="Phoenix" />
-            {:else}
-              <img style="height: 20vh; opacity: 0.2;" src={imagenMascotas["Phoenix"]} alt="Phoenix" />
-            {/if}
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div><p class="categoria-texto"><b>Mascota (si tiene)</b></p></div>
+            <div class="cod-mascotas-img">
+              {#if codigos.codLechuza}
+                <img style="height: 6vh;" src={imagenMascotas["Lechuza"]} alt="Lechuza" />
+              {:else}
+                <img style="height: 6vh; opacity: 0.2;" src={imagenMascotas["Lechuza"]} alt="Lechuza" />
+              {/if}
+              {#if codigos.codGato}
+                <img style="height: 9vh;" src={imagenMascotas["Gato"]} alt="Gato" />
+              {:else}
+                <img style="height: 9vh; opacity: 0.2;" src={imagenMascotas["Gato"]} alt="Gato" />
+              {/if}
+              {#if codigos.codSapo}
+                <img style="height: 4vh;" src={imagenMascotas["Sapo"]} alt="Sapo" />
+              {:else}
+                <img style="height: 4vh; opacity: 0.2;" src={imagenMascotas["Sapo"]} alt="Sapo" />
+              {/if}
+              {#if codigos.codRata}
+                <img style="height: 4vh;" src={imagenMascotas["Rata"]} alt="Rata" />
+              {:else}
+                <img style="height: 4vh; opacity: 0.2;" src={imagenMascotas["Rata"]} alt="Rata" />
+              {/if}
+              {#if codigos.codPhoenix}
+                <img style="height: 12vh;" src={imagenMascotas["Phoenix"]} alt="Phoenix" />
+              {:else}
+                <img style="height: 12vh; opacity: 0.2;" src={imagenMascotas["Phoenix"]} alt="Phoenix" />
+              {/if}
+            </div>
+
           </div>
 
-          <div style="margin-top: 8px;">
-            <p class="categoria-texto"><b>Mascota (si tiene)</b> <br> Dato categórico | Canal: Símbolo </p>
-          </div>
-
-          <div style="margin-top: -8px;" class="btn-group" role="group" aria-label="Basic outlined example">
+          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
             <button on:click={() => mostrarSolo(["codLechuza"], ["codGato", "codSapo", "codRata", "codPhoenix"])}
               style="font-size: 14px;" type="button" class="btn btn-outline-primary">Lechuza</button>
             <button on:click={() => mostrarSolo(["codGato"], ["codLechuza", "codSapo", "codRata", "codPhoenix"])}
