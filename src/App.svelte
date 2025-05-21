@@ -310,9 +310,15 @@
       
     </div>
 
-    <div class="header color-fondo">
+    <div class="bajada color-fondo">
       <img src="/public/images/banderas.png" width="300" alt="banderas">
-      <button><a href="https://www.harrypotter.com/es/sorting-hat">Descubre</a></button>
+      <div>
+        <h2 style="font-family: 'HarryPotter'; font-size: 45px;">Descubre tu casa de <br> Hogwarts</h2>
+        <button class="boton">
+          <a href="https://www.harrypotter.com/es/sorting-hat" 
+          style="text-decoration: none; color: white;">Completar Quizz</a>
+        </button>
+      </div>
     </div>
                 
     <div class="book-container">
@@ -376,7 +382,7 @@
                 </div>
 
                 <div class="nombre-personaje">
-                  <p>{personaje.personaje}</p>
+                  <p style="margin-top: 8px;">{personaje.personaje}</p>
                 </div>
 
               </div>
@@ -435,7 +441,7 @@
                 </div>
 
                 <div class="nombre-personaje">
-                  <p>{personaje.personaje}</p>
+                  <p style="margin-top: 8px;">{personaje.personaje}</p>
                 </div>
 
               </div>
@@ -446,7 +452,7 @@
     </div>
 
     <div class="codificacion-container color-fondo">
-      <h1>Codificación</h1>
+      <h1 class="cod-titulo">Codificación de las marcas</h1>
       <div class="cod-fila">
 
         <div class="cod">
