@@ -162,8 +162,8 @@
 
 .sombrero {
   position: absolute;
-  top: 1.2vh;
-  left: 2.55vw;
+  top: 1rem;
+  left: 2.4rem;
   width: 2.5vw;
   z-index: 2;
 }
