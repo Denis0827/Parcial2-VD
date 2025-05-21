@@ -394,20 +394,20 @@
                   {/if}
                   {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
                     {#if personaje.bando == "Bueno"}
-                      <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando["Bueno"]} alt="Bando" />
+                      <img class="sombrero sombrero_hp" src={imagenBando["Bueno"]} alt="Bando" />
                     {:else}
-                      <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando["Malo"]} alt="Bando" />
+                      <img class="sombrero sombrero_hp" src={imagenBando["Malo"]} alt="Bando" />
                     {/if}
-                    <img class="libros" style="margin-right: -6vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
-                    <img class="casa" style="left: 1.75vw; top: 10.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+                    <img class="libros libros_hp" src={imagenLibros[personaje.libros]} alt="Libros" />
+                    <img class="casa casa_hp" src={imagenCasas[personaje.casa]} alt="Casa" />
                   {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
                     {#if personaje.bando == "Bueno"}
-                      <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando["Bueno"]} alt="Bando" />
+                      <img class="sombrero sombrero_mp" src={imagenBando["Bueno"]} alt="Bando" />
                     {:else}
-                      <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando["Malo"]} alt="Bando" />
+                      <img class="sombrero sombrero_mp" src={imagenBando["Malo"]} alt="Bando" />
                     {/if}
-                    <img class="libros" style="margin-right: -5vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
-                    <img class="casa" style="left: 1.4vw; top: 11.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+                    <img class="libros libros_mp" src={imagenLibros[personaje.libros]} alt="Libros" />
+                    <img class="casa casa_mp" src={imagenCasas[personaje.casa]} alt="Casa" />
                   {:else}
                     {#if personaje.bando == "Bueno"}
                       <img class="sombrero" src={imagenBando["Bueno"]} alt="Bando" />
@@ -426,7 +426,7 @@
                     <img class="sapo" src={imagenMascotas["Sapo"]} alt="Sapo" />
                   {:else if personaje.mascota == "Rata"}
                     {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
-                      <img class="rata" style="top: 8.2vh;" src={imagenMascotas["Rata"]} alt="Rata" />
+                      <img class="rata rata_hp" src={imagenMascotas["Rata"]} alt="Rata" />
                     {:else}
                       <img class="rata" src={imagenMascotas["Rata"]} alt="Rata" />
                     {/if}
@@ -491,20 +491,20 @@
                   {/if}
                   {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
                     {#if personaje.bando == "Bueno"}
-                      <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando["Bueno"]} alt="Bando" />
+                      <img class="sombrero sombrero_hp" src={imagenBando["Bueno"]} alt="Bando" />
                     {:else}
-                      <img class="sombrero" style="left: 2.7vw; top: 3vh;" src={imagenBando["Malo"]} alt="Bando" />
+                      <img class="sombrero sombrero_hp" src={imagenBando["Malo"]} alt="Bando" />
                     {/if}
-                    <img class="libros" style="margin-right: -6vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
-                    <img class="casa" style="left: 1.75vw; top: 10.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+                    <img class="libros libros_hp" src={imagenLibros[personaje.libros]} alt="Libros" />
+                    <img class="casa casa_hp" src={imagenCasas[personaje.casa]} alt="Casa" />
                   {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
                     {#if personaje.bando == "Bueno"}
-                      <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando["Bueno"]} alt="Bando" />
+                      <img class="sombrero sombrero_mp" src={imagenBando["Bueno"]} alt="Bando" />
                     {:else}
-                      <img class="sombrero" style="left: 2.4vw; top: 4.5vh;" src={imagenBando["Malo"]} alt="Bando" />
+                      <img class="sombrero sombrero_mp" src={imagenBando["Malo"]} alt="Bando" />
                     {/if}
-                    <img class="libros" style="margin-right: -5vw;" src={imagenLibros[personaje.libros]} alt="Libros" />
-                    <img class="casa" style="left: 1.4vw; top: 11.5vh;" src={imagenCasas[personaje.casa]} alt="Casa" />
+                    <img class="libros libros_mp" src={imagenLibros[personaje.libros]} alt="Libros" />
+                    <img class="casa casa_mp" src={imagenCasas[personaje.casa]} alt="Casa" />
                   {:else}
                     {#if personaje.bando == "Bueno"}
                       <img class="sombrero" src={imagenBando["Bueno"]} alt="Bando" />
@@ -523,7 +523,7 @@
                     <img class="sapo" src={imagenMascotas["Sapo"]} alt="Sapo" />
                   {:else if personaje.mascota == "Rata"}
                     {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
-                      <img class="rata" style="top: 8.2vh;" src={imagenMascotas["Rata"]} alt="Rata" />
+                      <img class="rata rata_hp" src={imagenMascotas["Rata"]} alt="Rata" />
                     {:else}
                       <img class="rata" src={imagenMascotas["Rata"]} alt="Rata" />
                     {/if}

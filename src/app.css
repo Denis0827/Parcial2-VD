@@ -160,12 +160,32 @@
   z-index: 2;
 }
 
+.casa_hp {
+  left: 1.75vw; 
+  top: 10.5vh;
+}
+
+.casa_mp {
+  left: 1.4vw; 
+  top: 11.5vh;
+}
+
 .sombrero {
   position: absolute;
   top: 1rem;
   left: 2.4rem;
   width: 2.5vw;
   z-index: 2;
+}
+
+.sombrero_hp {
+  left: 2.7vw; 
+  top: 3vh;
+}
+
+.sombrero_mp {
+  left: 2.4vw; 
+  top: 4.5vh;
 }
 
 .libros {
@@ -175,6 +195,14 @@
   left: auto;
   top: auto;
   width: 3vw;
+}
+
+.libros_hp {
+  margin-right: -6vw;
+}
+
+.libros_mp {
+  margin-right: -5vw;
 }
 
 .gato {
@@ -209,6 +237,10 @@
   left: 4vw;
   z-index: 0;
   width: 30px;
+}
+
+.rata_hp {
+  top: 8.2vh;
 }
 
 .sapo {
@@ -474,36 +506,1104 @@
 
 .fade-in-right {
   animation: fadeIn 0.5s forwards;
-}    
+}  
 
-@media screen and (min-width: 1200px) and (max-width: 1440px) { 
-  
+
+@media screen and (min-width: 1000px) and (max-width: 1200px) { 
+  .book-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .book-pages {
+    position: absolute;
+    top: 18%;
+    left: 11%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    margin: -5vh 8vw;
+  }
+
+  .book-page {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-left: 3vw;
+  }
+
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 160px));
+    gap: 10px 0px;
+    grid-auto-rows: 438px;
+    align-items: flex-end;
+    max-width: 50vw;
+  }
+
   .personaje-container {
-    width: 5.8rem;
-    height: 14.2rem;
+    width: 6rem;
+    height: 11.4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
   }
 
+  .superpuesto {
+    position: relative;
+  }
+
+  .personaje {
+    position: absolute;
+    z-index: 1;
+    width: 30vw;
+    height: 26vh;
+  }
+
   .casa {
     position: absolute;
-    top: 4.1rem;
-    left: 1.4rem;
-    width: 70px;
-    height: 70px;
+    top: 3rem;
+    left: 1.2rem;
+    height: 50px;
     z-index: 2;
   }
+
+  .casa_hp {
+    left: 1.35rem; 
+    top: 3.6rem;
+  }
+
+  .casa_mp {
+    left: 1.1rem; 
+    top: 4rem;
+  }
+
+  .sombrero {
+    position: absolute;
+    top: 0.3rem;
+    left: 2.4rem;
+    width: 2.5vw;
+    z-index: 2;
+  }
+
+  .sombrero_hp {
+    left: 2.5rem; 
+    top: 0.8rem;
+  }
+
+  .sombrero_mp {
+    left: 2.2rem; 
+    top: 1.2rem;
+  }
+
+  .libros {
+    position: static;
+    margin-bottom: 0;
+    margin-right: -65px;
+    left: auto;
+    top: auto;
+    width: 3vw;
+  }
+
+  .libros_hp {
+    margin-right: -5.9vw;
+  }
+
+  .libros_mp {
+    margin-right: -5vw;
+  }
+
+  .gato {
+    position: absolute;
+    top: 6.9rem;
+    left: 8px;
+    z-index: 0;
+    width: 6vw;
+  }
+
+  .phoenix {
+    position: absolute;
+    top: 1.2rem;
+    left: 3rem;
+    z-index: 0;
+    height: 70px;
+  }
+
+  .lechuza {
+    position: absolute;
+    top: 4vh;
+    left: 5.2vw;
+    transform: scaleX(-1);
+    z-index: 0;
+    width: 48px;
+  }
+
+  .rata {
+    position: absolute;
+    top: 2.4rem;
+    left: 3.7rem;
+    z-index: 0;
+    width: 20px;
+  }
+
+  .rata_hp {
+    top: 2.9rem;
+    left: 3.8rem;
+
+  }
+
+  .sapo {
+    position: absolute;
+    top: 2.5rem;
+    left: 3.6rem;
+    z-index: 0;
+    width: 25px;
+    transform: rotate(25deg);
+  }
+
+  .personaje-fantasma {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+  }
+
+  .brillo-varita {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Posiciones específicas según el tipo de personaje */
+  .brillo-varita-principal-hombre {
+    top: -0.2rem;
+    right: 2rem;
+    transform: rotate(-20deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-hombre {
+    top: 3.2rem;
+    right: 3.4rem;
+    transform: rotate(-35deg) scale(0.7);
+  }
+
+  .brillo-varita-principal-mujer {
+    top: -0.2rem;
+    right: 1.4rem;
+    transform: rotate(-30deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-mujer {
+    top: 3.4rem;
+    right: 3.2rem;
+    transform: rotate(-40deg) scale(0.7);
+  }
+
+  .nombre-personaje {
+    text-align: center;
+    padding: 0 55px 0 0;
+    font-size: 9px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1440px) { 
+  .book-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .book-pages {
+    position: absolute;
+    top: 20%;
+    left: 11%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    margin: -5vh 8vw;
+  }
+
+  .book-page {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-left: 3vw;
+  }
+
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 180px));
+    gap: 32px 0px;
+    grid-auto-rows: 438px;
+    align-items: flex-end;
+    max-width: 50vw;
+  }
+
+  .personaje-container {
+    width: 6rem;
+    height: 11.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .superpuesto {
+    position: relative;
+  }
+
+  .personaje {
+    position: absolute;
+    z-index: 1;
+    width: 30vw;
+    height: 26vh;
+  }
+
+  .casa {
+    position: absolute;
+    top: 1.8rem;
+    left: 1.3rem;
+    width: 70px;
+    height: 60px;
+    z-index: 2;
+  }
+
+  .casa_hp {
+    left: 1.5rem; 
+    top: 2.5rem;
+  }
+
+  .casa_mp {
+    left: 1.1rem; 
+    top: 2.8rem;
+  }
+
+  .sombrero {
+    position: absolute;
+    top: -1.3rem;
+    left: 2.2rem;
+    width: 2.5vw;
+    z-index: 2;
+  }
+
+  .sombrero_hp {
+    left: 2.5rem; 
+    top: -0.6rem;
+  }
+
+  .sombrero_mp {
+    left: 2.2rem; 
+    top: -0.2rem;
+  }
+
+  .libros {
+    position: static;
+    margin-bottom: 0;
+    margin-right: -65px;
+    left: auto;
+    top: auto;
+    width: 3vw;
+  }
+
+  .libros_hp {
+    margin-right: -5.9vw;
+  }
+
+  .libros_mp {
+    margin-right: -5vw;
+  }
+
+  .gato {
+    position: absolute;
+    top: 6.1rem;
+    left: 2px;
+    z-index: 0;
+    width: 6vw;
+  }
+
+  .phoenix {
+    position: absolute;
+    top: -0.2rem;
+    left: 4rem;
+    z-index: 0;
+    height: 90px;
+  }
+
+  .lechuza {
+    position: absolute;
+    top: -1vh;
+    left: 4.5vw;
+    transform: scaleX(-1);
+    z-index: 0;
+    width: 48px;
+  }
+
+  .rata {
+    position: absolute;
+    top: 1.2rem;
+    left: 3.8rem;
+    z-index: 0;
+    width: 24px;
+  }
+
+  .rata_hp {
+    top: 0.9rem;
+    left: 4rem;
+
+  }
+
+  .sapo {
+    position: absolute;
+    top: 1.4rem;
+    left: 3.8rem;
+    z-index: 0;
+    width: 25px;
+    transform: rotate(25deg);
+  }
+
+  .personaje-fantasma {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+  }
+
+  .brillo-varita {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Posiciones específicas según el tipo de personaje */
+  .brillo-varita-principal-hombre {
+    top: -2.0rem;
+    right: 2rem;
+    transform: rotate(-20deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-hombre {
+    top: 2.2rem;
+    right: 3.7rem;
+    transform: rotate(-35deg) scale(0.7);
+  }
+
+  .brillo-varita-principal-mujer {
+    top: -1.9rem;
+    right: 1.3rem;
+    transform: rotate(-30deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-mujer {
+    top: 1.8rem;
+    right: 3.4rem;
+    transform: rotate(-40deg) scale(0.7);
+  }
+
+  .nombre-personaje {
+    text-align: center;
+    padding: 0 80px 0 0;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
 }
 
 @media screen and (min-width: 1440px) and (max-width: 1600px) { 
+  .book-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .book-pages {
+    position: absolute;
+    top: 22%;
+    left: 11%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    margin: -5vh 8vw;
+  }
+
+  .book-page {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-left: 4vw;
+  }
+
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 200px));
+    gap: 60px 5px;
+    grid-auto-rows: 438px;
+    align-items: flex-end;
+    max-width: 50vw;
+  }
+
+  .personaje-container {
+    width: 6rem;
+    height: 12.4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .superpuesto {
+    position: relative;
+  }
+
+  .personaje {
+    position: absolute;
+    z-index: 1;
+    width: 32vw;
+    height: 28vh;
+  }
+
   .casa {
     position: absolute;
-    top: 4.1rem;
+    top: 1.15rem;
+    left: 1.3rem;
+    width: 70px;
+    height: 70px;
+    z-index: 2;
+  }
+
+  .casa_hp {
+    left: 1.6rem; 
+    top: 1.8rem;
+  }
+
+  .casa_mp {
+    left: 1.1rem; 
+    top: 2.4rem;
+  }
+
+  .sombrero {
+    position: absolute;
+    top: -2.3rem;
+    left: 2.2rem;
+    width: 2.5vw;
+    z-index: 2;
+  }
+
+  .sombrero_hp {
+    left: 2.5rem; 
+    top: -1.5rem;
+  }
+
+  .sombrero_mp {
+    left: 2rem; 
+    top: -1rem;
+  }
+
+  .libros {
+    position: static;
+    margin-bottom: 0;
+    margin-right: -90px;
+    left: auto;
+    top: auto;
+    width: 3vw;
+  }
+
+  .libros_hp {
+    margin-right: -5.9vw;
+  }
+
+  .libros_mp {
+    margin-right: -5vw;
+  }
+
+  .gato {
+    position: absolute;
+    top: 6.8rem;
+    left: -9px;
+    z-index: 0;
+    width: 6vw;
+  }
+
+  .phoenix {
+    position: absolute;
+    top: -4rem;
+    left: 4.5rem;
+    z-index: 0;
+    width: 160px;
+    height: 160px;
+  }
+
+  .lechuza {
+    position: absolute;
+    top: -2vh;
+    left: 4.4vw;
+    transform: scaleX(-1);
+    z-index: 0;
+    width: 60px;
+  }
+
+  .rata {
+    position: absolute;
+    top: 0.2rem;
+    left: 3.8rem;
+    z-index: 0;
+    width: 30px;
+  }
+
+  .rata_hp {
+    top: 0.9rem;
+    left: 4rem;
+
+  }
+
+  .sapo {
+    position: absolute;
+    top: 0.6rem;
+    left: 4rem;
+    z-index: 0;
+    width: 30px;
+    transform: rotate(25deg);
+  }
+
+  .personaje-fantasma {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+  }
+
+  .brillo-varita {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Posiciones específicas según el tipo de personaje */
+  .brillo-varita-principal-hombre {
+    top: -3rem;
+    right: 1.5rem;
+    transform: rotate(-20deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-hombre {
+    top: 2.2rem;
+    right: 3.7rem;
+    transform: rotate(-35deg) scale(0.7);
+  }
+
+  .brillo-varita-principal-mujer {
+    top: -2.9rem;
+    right: 1rem;
+    transform: rotate(-30deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-mujer {
+    top: 1.8rem;
+    right: 3.4rem;
+    transform: rotate(-40deg) scale(0.7);
+  }
+
+  .nombre-personaje {
+    text-align: center;
+    padding: 0 80px 0 0;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1800px) { 
+  .book-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .book-pages {
+    position: absolute;
+    top: 21%;
+    left: 11%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    margin: -5vh 8vw;
+  }
+
+  .book-page {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-left: 4vw;
+  }
+
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 200px));
+    gap: 60px 40px;
+    grid-auto-rows: 438px;
+    align-items: flex-end;
+    max-width: 50vw;
+  }
+
+  .personaje-container {
+    width: 6rem;
+    height: 14.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .superpuesto {
+    position: relative;
+  }
+
+  .personaje {
+    position: absolute;
+    z-index: 1;
+    width: 32vw;
+    height: 28vh;
+  }
+
+  .casa {
+    position: absolute;
+    top: 1.7rem;
     left: 1.4rem;
     width: 70px;
     height: 70px;
     z-index: 2;
   }
+
+  .casa_hp {
+    left: 1.6rem; 
+    top: 2.5rem;
+  }
+
+  .casa_mp {
+    left: 1.1rem; 
+    top: 3.1rem;
+  }
+
+  .sombrero {
+    position: absolute;
+    top: -2.3rem;
+    left: 2.2rem;
+    width: 2.5vw;
+    z-index: 2;
+  }
+
+  .sombrero_hp {
+    left: 2.5rem; 
+    top: -1.5rem;
+  }
+
+  .sombrero_mp {
+    left: 1.7rem; 
+    top: -0.6rem;
+  }
+
+  .libros {
+    position: static;
+    margin-bottom: 0;
+    margin-right: -90px;
+    left: auto;
+    top: auto;
+    width: 3vw;
+  }
+
+  .libros_hp {
+    margin-right: -5.9vw;
+  }
+
+  .libros_mp {
+    margin-right: -5vw;
+  }
+
+  .gato {
+    position: absolute;
+    top: 8rem;
+    left: -9px;
+    z-index: 0;
+    width: 6vw;
+  }
+
+  .phoenix {
+    position: absolute;
+    top: -4rem;
+    left: 4.5rem;
+    z-index: 0;
+    width: 160px;
+    height: 160px;
+  }
+
+  .lechuza {
+    position: absolute;
+    top: -2vh;
+    left: 4.4vw;
+    transform: scaleX(-1);
+    z-index: 0;
+    width: 60px;
+  }
+
+  .rata {
+    position: absolute;
+    top: 0.6rem;
+    left: 3.8rem;
+    z-index: 0;
+    width: 35px;
+  }
+
+  .rata_hp {
+    top: 1.4rem;
+  }
+
+  .sapo {
+    position: absolute;
+    top: 1rem;
+    left: 4rem;
+    z-index: 0;
+    width: 30px;
+    transform: rotate(25deg);
+  }
+
+  .personaje-fantasma {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+  }
+
+  .brillo-varita {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Posiciones específicas según el tipo de personaje */
+  .brillo-varita-principal-hombre {
+    top: -3rem;
+    right: 1.5rem;
+    transform: rotate(-20deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-hombre {
+    top: 2.2rem;
+    right: 3.7rem;
+    transform: rotate(-35deg) scale(0.7);
+  }
+
+  .brillo-varita-principal-mujer {
+    top: -2.6rem;
+    right: 1rem;
+    transform: rotate(-30deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-mujer {
+    top: 2.5rem;
+    right: 3.6rem;
+    transform: rotate(-40deg) scale(0.7);
+  }
+
+  .nombre-personaje {
+    text-align: center;
+    padding: 0 80px 0 0;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+}
+
+
+@media screen and (min-width: 1800px) and (max-width: 2000px) { 
+  .book-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .book-pages {
+    position: absolute;
+    top: 21%;
+    left: 11%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    margin: -5vh 8vw;
+  }
+
+  .book-page {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-left: 4vw;
+  }
+
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 200px));
+    gap: 60px 40px;
+    grid-auto-rows: 438px;
+    align-items: flex-end;
+    max-width: 50vw;
+  }
+
+  .personaje-container {
+    width: 6rem;
+    height: 14.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .superpuesto {
+    position: relative;
+  }
+
+  .personaje {
+    position: absolute;
+    z-index: 1;
+    width: 32vw;
+    height: 28vh;
+  }
+
+  .casa {
+    position: absolute;
+    top: 0.2rem;
+    left: 1.4rem;
+    width: 70px;
+    height: 70px;
+    z-index: 2;
+  }
+
+  .casa_hp {
+    left: 1.6rem; 
+    top: 1rem;
+  }
+
+  .casa_mp {
+    left: 1.1rem; 
+    top: 1.5rem;
+  }
+
+  .sombrero {
+    position: absolute;
+    top: -4.2rem;
+    left: 2.2rem;
+    width: 2.5vw;
+    z-index: 2;
+  }
+
+  .sombrero_hp {
+    left: 2.5rem; 
+    top: -3.2rem;
+  }
+
+  .sombrero_mp {
+    left: 1.7rem; 
+    top: -2.6rem;
+  }
+
+  .libros {
+    position: static;
+    margin-bottom: 0;
+    margin-right: -90px;
+    left: auto;
+    top: auto;
+    width: 3vw;
+  }
+
+  .libros_hp {
+    margin-right: -5.9vw;
+  }
+
+  .libros_mp {
+    margin-right: -5vw;
+  }
+
+  .gato {
+    position: absolute;
+    top: 8rem;
+    left: -9px;
+    z-index: 0;
+    width: 6vw;
+  }
+
+  .phoenix {
+    position: absolute;
+    top: -4rem;
+    left: 4.5rem;
+    z-index: 0;
+    width: 160px;
+    height: 160px;
+  }
+
+  .lechuza {
+    position: absolute;
+    top: -4vh;
+    left: 4vw;
+    transform: scaleX(-1);
+    z-index: 0;
+    width: 60px;
+  }
+
+  .rata {
+    position: absolute;
+    top: -0.9rem;
+    left: 4.2rem;
+    z-index: 0;
+    width: 35px;
+  }
+
+  .rata_hp {
+    top: 0.2rem;
+  }
+
+  .sapo {
+    position: absolute;
+    top: -0.45rem;
+    left: 4.3rem;
+    z-index: 0;
+    width: 35px;
+    transform: rotate(25deg);
+  }
+
+  .personaje-fantasma {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+  }
+
+  .brillo-varita {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Posiciones específicas según el tipo de personaje */
+  .brillo-varita-principal-hombre {
+    top: -5rem;
+    right: 1.5rem;
+    transform: rotate(-20deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-hombre {
+    top: 1.2rem;
+    right: 3.7rem;
+    transform: rotate(-35deg) scale(0.7);
+  }
+
+  .brillo-varita-principal-mujer {
+    top: -5.2rem;
+    right: 1rem;
+    transform: rotate(-30deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-mujer {
+    top: 1.5rem;
+    right: 3.6rem;
+    transform: rotate(-40deg) scale(0.7);
+  }
+
+  .nombre-personaje {
+    text-align: center;
+    padding: 0 80px 0 0;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
 }
