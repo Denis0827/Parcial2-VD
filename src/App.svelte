@@ -13,7 +13,7 @@
   console.log("atletas", atletas)
 
   const imagenCasas = {
-    Gryffindor: "images/gryffindor.svg",
+    Gryffindor: "/images/gryffindor.svg",
     Hufflepuff: "/public/images/hufflepuff.svg",
     Ravenclaw: "/public/images/ravenclaw.svg",
     Slytherin: "/public/images/slytherin.svg",
