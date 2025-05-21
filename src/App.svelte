@@ -282,8 +282,8 @@
 
   <div class="home" id="home">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: var(--color_nav); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-      <div style="padding-left: 30px; display: flex; gap: 20px;" class="container-fluid">
-        <a class="navbar-brand" href="#home">
+      <div style="padding-left: 35px; display: flex; gap: 20px;" class="container-fluid">
+        <a class="navbar-brand" href="https://www.harrypotter.com/es" target="_blank">
           <img src="/images/logo.png" alt="Logo" width="120px" height="20">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
@@ -294,7 +294,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="#home">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#representacion">Representación</a>
