@@ -133,7 +133,7 @@
 
 .personaje-container {
   width: 6rem;
-  height: 15.8rem;
+  height: 15.8em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -475,3 +475,35 @@
 .fade-in-right {
   animation: fadeIn 0.5s forwards;
 }    
+
+@media screen and (min-width: 1200px) and (max-width: 1440px) { 
+  
+  .personaje-container {
+    width: 5.8rem;
+    height: 14.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .casa {
+    position: absolute;
+    top: 4.1rem;
+    left: 1.4rem;
+    width: 70px;
+    height: 70px;
+    z-index: 2;
+  }
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1600px) { 
+  .casa {
+    position: absolute;
+    top: 4.1rem;
+    left: 1.4rem;
+    width: 70px;
+    height: 70px;
+    z-index: 2;
+  }
+}
