@@ -3,12 +3,16 @@
 }
 
 .color-fondo {
-    background-color: #9b7a5d;
+  background-color: #9b7a5d;
+}
+
+.color-fondo2 {
+  background-color: rgb(172, 131, 96);
 }
 
 @font-face {
-  font-family: 'HarryPotter';
-  src: url('fonts/WizardWorldSimplified.ttf') format('truetype');
+  font-family: "HarryPotter";
+  src: url("fonts/WizardWorldSimplified.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -23,15 +27,15 @@
 }
 
 .home {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .fondo {
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .contenedor {
@@ -58,18 +62,23 @@
   opacity: 0.9;
   animation: parpadeo 2s infinite;
   text-shadow: 0 0 8px #fff, 0 0 30px #000000, 0 0 30px #000000;
-
 }
 
 @keyframes parpadeo {
-  0%, 100% { opacity: 0.8; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(5px); }
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(5px);
+  }
 }
 
-
 .bajada {
-  display: flex; 
-  flex-direction: row; 
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 30px;
@@ -77,10 +86,20 @@
   padding-bottom: 3rem;
 }
 
+.fila {
+  display: flex;
+  flex-direction: row;
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+}
+
 .boton {
-  background-color: #534f9c; 
-  color: white !important; 
-  border-radius: 20px !important; 
+  background-color: #534f9c;
+  color: white !important;
+  border-radius: 20px !important;
   padding: 10px 20px !important;
 }
 
@@ -89,7 +108,7 @@
 }
 
 .boton:active {
-  background-color: rgb(90, 46, 166); 
+  background-color: rgb(90, 46, 166);
 }
 
 .book-container {
@@ -161,12 +180,12 @@
 }
 
 .casa_hp {
-  left: 1.75vw; 
+  left: 1.75vw;
   top: 10.5vh;
 }
 
 .casa_mp {
-  left: 1.4vw; 
+  left: 1.4vw;
   top: 11.5vh;
 }
 
@@ -179,12 +198,12 @@
 }
 
 .sombrero_hp {
-  left: 2.7vw; 
+  left: 2.7vw;
   top: 3vh;
 }
 
 .sombrero_mp {
-  left: 2.4vw; 
+  left: 2.4vw;
   top: 4.5vh;
 }
 
@@ -253,18 +272,8 @@
 }
 
 .personaje-fantasma {
-  -webkit-mask-image: linear-gradient(
-    to top,
-    transparent 0%,
-    rgba(0, 0, 0, 0.5) 30%,
-    rgba(0, 0, 0, 1) 50%
-  );
-  mask-image: linear-gradient(
-    to top,
-    transparent 0%,
-    rgba(0, 0, 0, 0.5) 30%,
-    rgba(0, 0, 0, 1) 50%
-  );
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
+  mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
 }
 
 .brillo-varita {
@@ -324,7 +333,7 @@
 .cod-titulo {
   text-align: center;
   padding-top: 4vh;
-  font-family: 'HarryPotter', sans-serif;
+  font-family: "HarryPotter", sans-serif;
 }
 
 .cod-fila {
@@ -344,6 +353,7 @@
 .cod {
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
 }
 
 .cod-mascotas-img {
@@ -475,21 +485,22 @@
   perspective: 1000px;
 }
 
-/* Evita problemas específicos con estos personajes */
-.personaje-container:has(.nombre-personaje p:contains("Parvati")),
-.personaje-container:has(.nombre-personaje p:contains("Pomona")) {
-  isolation: isolate;
-  contain: paint;
-}
-
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .fade-out-up {
@@ -506,10 +517,9 @@
 
 .fade-in-right {
   animation: fadeIn 0.5s forwards;
-}  
+}
 
-
-@media screen and (min-width: 1000px) and (max-width: 1200px) { 
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
   .book-container {
     position: relative;
     width: 100%;
@@ -578,12 +588,12 @@
   }
 
   .casa_hp {
-    left: 1.35rem; 
+    left: 1.35rem;
     top: 3.6rem;
   }
 
   .casa_mp {
-    left: 1.1rem; 
+    left: 1.1rem;
     top: 4rem;
   }
 
@@ -596,12 +606,12 @@
   }
 
   .sombrero_hp {
-    left: 2.5rem; 
+    left: 2.5rem;
     top: 0.8rem;
   }
 
   .sombrero_mp {
-    left: 2.2rem; 
+    left: 2.2rem;
     top: 1.2rem;
   }
 
@@ -658,7 +668,6 @@
   .rata_hp {
     top: 2.9rem;
     left: 3.8rem;
-
   }
 
   .sapo {
@@ -671,18 +680,8 @@
   }
 
   .personaje-fantasma {
-    -webkit-mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
-    mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
+    mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
   }
 
   .brillo-varita {
@@ -725,10 +724,9 @@
     font-weight: bold;
     margin-top: 10px;
   }
-
 }
 
-@media screen and (min-width: 1200px) and (max-width: 1440px) { 
+@media screen and (min-width: 1200px) and (max-width: 1440px) {
   .book-container {
     position: relative;
     width: 100%;
@@ -798,12 +796,12 @@
   }
 
   .casa_hp {
-    left: 1.5rem; 
+    left: 1.5rem;
     top: 2.5rem;
   }
 
   .casa_mp {
-    left: 1.1rem; 
+    left: 1.1rem;
     top: 2.8rem;
   }
 
@@ -816,12 +814,12 @@
   }
 
   .sombrero_hp {
-    left: 2.5rem; 
+    left: 2.5rem;
     top: -0.6rem;
   }
 
   .sombrero_mp {
-    left: 2.2rem; 
+    left: 2.2rem;
     top: -0.2rem;
   }
 
@@ -878,7 +876,6 @@
   .rata_hp {
     top: 0.9rem;
     left: 4rem;
-
   }
 
   .sapo {
@@ -891,18 +888,8 @@
   }
 
   .personaje-fantasma {
-    -webkit-mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
-    mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
+    mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
   }
 
   .brillo-varita {
@@ -915,7 +902,7 @@
 
   /* Posiciones específicas según el tipo de personaje */
   .brillo-varita-principal-hombre {
-    top: -2.0rem;
+    top: -2rem;
     right: 2rem;
     transform: rotate(-20deg) scale(0.8);
   }
@@ -945,10 +932,9 @@
     font-weight: bold;
     margin-top: 10px;
   }
-
 }
 
-@media screen and (min-width: 1440px) and (max-width: 1600px) { 
+@media screen and (min-width: 1440px) and (max-width: 1600px) {
   .book-container {
     position: relative;
     width: 100%;
@@ -1018,12 +1004,12 @@
   }
 
   .casa_hp {
-    left: 1.6rem; 
+    left: 1.6rem;
     top: 1.8rem;
   }
 
   .casa_mp {
-    left: 1.1rem; 
+    left: 1.1rem;
     top: 2.4rem;
   }
 
@@ -1036,12 +1022,12 @@
   }
 
   .sombrero_hp {
-    left: 2.5rem; 
+    left: 2.5rem;
     top: -1.5rem;
   }
 
   .sombrero_mp {
-    left: 2rem; 
+    left: 2rem;
     top: -1rem;
   }
 
@@ -1099,7 +1085,6 @@
   .rata_hp {
     top: 0.9rem;
     left: 4rem;
-
   }
 
   .sapo {
@@ -1112,18 +1097,8 @@
   }
 
   .personaje-fantasma {
-    -webkit-mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
-    mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
+    mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
   }
 
   .brillo-varita {
@@ -1166,10 +1141,9 @@
     font-weight: bold;
     margin-top: 10px;
   }
-
 }
 
-@media screen and (min-width: 1600px) and (max-width: 1800px) { 
+@media screen and (min-width: 1600px) and (max-width: 1800px) {
   .book-container {
     position: relative;
     width: 100%;
@@ -1239,12 +1213,12 @@
   }
 
   .casa_hp {
-    left: 1.6rem; 
+    left: 1.6rem;
     top: 2.5rem;
   }
 
   .casa_mp {
-    left: 1.1rem; 
+    left: 1.1rem;
     top: 3.1rem;
   }
 
@@ -1257,12 +1231,12 @@
   }
 
   .sombrero_hp {
-    left: 2.5rem; 
+    left: 2.5rem;
     top: -1.5rem;
   }
 
   .sombrero_mp {
-    left: 1.7rem; 
+    left: 1.7rem;
     top: -0.6rem;
   }
 
@@ -1331,18 +1305,8 @@
   }
 
   .personaje-fantasma {
-    -webkit-mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
-    mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
+    mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
   }
 
   .brillo-varita {
@@ -1385,11 +1349,9 @@
     font-weight: bold;
     margin-top: 10px;
   }
-
 }
 
-
-@media screen and (min-width: 1800px) and (max-width: 2000px) { 
+@media screen and (min-width: 1800px) and (max-width: 2000px) {
   .book-container {
     position: relative;
     width: 100%;
@@ -1459,12 +1421,12 @@
   }
 
   .casa_hp {
-    left: 1.6rem; 
+    left: 1.6rem;
     top: 1rem;
   }
 
   .casa_mp {
-    left: 1.1rem; 
+    left: 1.1rem;
     top: 1.5rem;
   }
 
@@ -1477,12 +1439,12 @@
   }
 
   .sombrero_hp {
-    left: 2.5rem; 
+    left: 2.5rem;
     top: -3.2rem;
   }
 
   .sombrero_mp {
-    left: 1.7rem; 
+    left: 1.7rem;
     top: -2.6rem;
   }
 
@@ -1551,18 +1513,8 @@
   }
 
   .personaje-fantasma {
-    -webkit-mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
-    mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
+    mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
   }
 
   .brillo-varita {
@@ -1605,5 +1557,155 @@
     font-weight: bold;
     margin-top: 10px;
   }
+}
 
+.codificacion-compacta {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.cod-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cod-item p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.cod-elementos {
+  display: flex;
+  gap: 5px;
+  align-items: flex-end;
+}
+
+.elemento-cod {
+  height: 60px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.elemento-cod:hover {
+  transform: scale(1.1);
+}
+
+.elemento-inactivo {
+  opacity: 0.3;
+}
+
+.elemento-seleccionado {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.personajes-filtrados-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin: 20px 0;
+}
+
+.personaje-filtrado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  margin: 10px;
+}
+
+.book-navigation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.nav-arrow {
+  position: absolute;
+  background: rgba(139, 69, 19, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.nav-arrow-up {
+  top: 50%;
+  left: -250px;
+  transform: translateY(-50%);
+}
+
+.nav-arrow-down {
+  top: 50%;
+  right: -70px;
+  transform: translateY(-50%);
+}
+.page-indicators {
+  position: absolute;
+  bottom: -60px;
+  left: 43%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: all;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 12px 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.page-counter {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgba(139, 69, 19, 1);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  margin-bottom: 4px;
+}
+
+.page-dots {
+  display: flex;
+  gap: 12px;
+}
+
+.page-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(139, 69, 19, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-dot:hover {
+  background: rgba(139, 69, 19, 0.7);
+  transform: scale(1.2);
+}
+
+.page-dot.active {
+  background: rgba(139, 69, 19, 1);
+  transform: scale(1.3);
 }
