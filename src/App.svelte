@@ -135,50 +135,6 @@ function aplicarFiltro(categoria, valor) {
 
   // Variables para controlar el scroll y las animaciones
   let transitionInProgress = false;
-  let scrollDirection = null;
-  let lastScrollTime = 0;
-  const scrollDebounceTime = 150; // Tiempo mínimo entre transiciones
-
-  // Función para detectar dirección del scroll
-  function handleScroll(event) {
-    const deltaY = event.deltaY || event.detail || -event.wheelDelta;
-
-    const libroAbajo = document.getElementById('libro-animado');
-    const libroArriba = document.getElementById('libro-animado2');
-
-    const rectAbajo = libroAbajo.getBoundingClientRect();
-    const rectArriba = libroArriba.getBoundingClientRect();
-
-    const estaEnVistaAbajo = rectAbajo.top <= window.innerHeight && rectAbajo.bottom >= 0;
-    const estaEnVistaArriba = rectArriba.top <= window.innerHeight && rectArriba.bottom >= 0;
-
-    // Si no estamos en la zona correspondiente, NO seguimos
-    if (deltaY > 0 && !estaEnVistaAbajo) return;
-    if (deltaY < 0 && !estaEnVistaArriba) return;
-
-    // Si estamos al principio o final del grupo, permitimos scroll libre
-    if (grupoActualIndex === gruposPersonajes.length - 1 && deltaY > 0) return;
-    if (grupoActualIndex === 0 && deltaY < 0) return;
-
-    // Bloqueamos scroll manual
-    event.preventDefault();
-
-    // Transición en curso o scroll demasiado rápido
-    if (transitionInProgress) return;
-
-    const currentTime = Date.now();
-    if (currentTime - lastScrollTime < 300) return;
-    lastScrollTime = currentTime;
-
-    if (Math.abs(deltaY) < 10) return;
-
-    // Avanzar o retroceder
-    if (deltaY > 0 && grupoActualIndex < gruposPersonajes.length - 1) {
-      transitionToNextGroup();
-    } else if (deltaY < 0 && grupoActualIndex > 0) {
-      transitionToPreviousGroup();
-    }
-  }
 
   // Función para transición al siguiente grupo
   function transitionToNextGroup() {
@@ -305,35 +261,6 @@ function aplicarFiltro(categoria, valor) {
       }, 100);
     }, 500);
   }
-
-  // Configurar event listeners cuando el componente se monta
-  onMount(() => {
-    // Usar wheel event en lugar de scroll para mejor control
-    window.addEventListener('wheel', handleScroll, { passive: false });
-    
-    // También escuchar eventos de teclado para navegación con flechas
-    const handleKeyDown = (event) => {
-      if (event.key === 'ArrowDown' || event.key === 'PageDown') {
-        event.preventDefault();
-        if (grupoActualIndex < gruposPersonajes.length - 1) {
-          transitionToNextGroup();
-        }
-      } else if (event.key === 'ArrowUp' || event.key === 'PageUp') {
-        event.preventDefault();
-        if (grupoActualIndex > 0) {
-          transitionToPreviousGroup();
-        }
-      }
-    };
-    
-    window.addEventListener('keydown', handleKeyDown);
-    
-    // Limpiar event listeners cuando el componente se desmonta
-    return () => {
-      window.removeEventListener('wheel', handleScroll);
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  });
 
 </script>
 
