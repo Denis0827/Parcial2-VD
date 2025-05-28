@@ -1159,7 +1159,7 @@
 
   .book-pages {
     position: absolute;
-    top: 22vh;
+    top: 17vh;
     left: 11%;
     width: 75%;
     height: 70%;
@@ -1178,15 +1178,16 @@
   .catalogo-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(45px, 200px));
-    gap: 60px 5px;
+    gap: 20px 5px;
     grid-auto-rows: 438px;
     align-items: flex-end;
     max-width: 50vw;
   }
 
   .personaje-container {
+    position: relative;
     width: 6rem;
-    height: 12.4rem;
+    height: 15rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1206,7 +1207,7 @@
 
   .casa {
     position: absolute;
-    top: 1.2rem;
+    top: 25%;
     left: 1.3rem;
     width: 70px;
     height: 70px;
@@ -1225,7 +1226,7 @@
 
   .sombrero {
     position: absolute;
-    top: -2.3rem;
+    top: 1%;
     left: 2.2rem;
     width: 2.5vw;
     z-index: 2;
