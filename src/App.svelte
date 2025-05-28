@@ -357,10 +357,13 @@ function aplicarFiltro(categoria, valor) {
               <a class="nav-link active" aria-current="page" href="#home">Home</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#codificacion">Codificación</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#representacion">Representación</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#codificacion">Codificación</a>
+              <a class="nav-link" href="#filtro">Filtrado</a>
             </li>
           </ul>
           <!-- Texto a la derecha -->
@@ -394,7 +397,7 @@ function aplicarFiltro(categoria, valor) {
     </div>
   </div>
 
-  <div class=" color-fondo2">
+  <div class="color-fondo2" id="codificacion" style="padding: 3rem;">
     <h1 class="cod-titulo">Codificación de las marcas</h1>
     <div class="cod-fila">
 
@@ -544,6 +547,7 @@ function aplicarFiltro(categoria, valor) {
         </div>
       </div>
     </div>
+  </div>
 
     <div style="padding: 2rem;" id="representacion" class="color-fondo2">
     </div>
@@ -938,7 +942,7 @@ function aplicarFiltro(categoria, valor) {
         
         {#if personajesFiltrados.length === 0}
           <div class="text-center">
-            <h3>No se encontraron personajes que coincidan con los filtros seleccionados</h3>
+            <h3>No se encontraron personajes que coincidan <br> con los filtros seleccionados</h3>
             <p>Intenta ajustar los filtros para ver más resultados</p>
           </div>
         {:else}
@@ -1044,8 +1048,16 @@ function aplicarFiltro(categoria, valor) {
           </p>
         {/if}
       </div>
+    </div>
     
   </main>
+
+  <footer>
+    <div>
+    
+    </div>
+  </footer> 
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
