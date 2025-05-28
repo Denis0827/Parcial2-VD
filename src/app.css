@@ -1204,19 +1204,18 @@
     position: absolute;
     top: 25%;
     left: 1.3rem;
-    width: 70px;
-    height: 70px;
+    height: 9vh;
     z-index: 2;
   }
 
   .casa_hp {
     left: 1.6rem;
-    top: 1.8rem;
+    top: 28%;
   }
 
   .casa_mp {
     left: 1.1rem;
-    top: 2.4rem;
+    top: 32%;
   }
 
   .sombrero {
@@ -1229,12 +1228,12 @@
 
   .sombrero_hp {
     left: 2.5rem;
-    top: -1.5rem;
+    top: 5%;
   }
 
   .sombrero_mp {
     left: 2rem;
-    top: -1rem;
+    top: 8%;
   }
 
   .libros {
@@ -1256,7 +1255,7 @@
 
   .gato {
     position: absolute;
-    top: 6.8rem;
+    top: 58%;
     left: -9px;
     z-index: 0;
     width: 6vw;
@@ -1264,7 +1263,7 @@
 
   .phoenix {
     position: absolute;
-    top: -4rem;
+    top: 1%;
     left: 4.5rem;
     z-index: 0;
     width: 160px;
@@ -1273,7 +1272,7 @@
 
   .lechuza {
     position: absolute;
-    top: -2vh;
+    top: 8%;
     left: 4.4vw;
     transform: scaleX(-1);
     z-index: 0;
@@ -1282,61 +1281,56 @@
 
   .rata {
     position: absolute;
-    top: 0.2rem;
+    top: 18%;
     left: 3.8rem;
     z-index: 0;
     width: 30px;
   }
 
   .rata_hp {
-    top: 0.9rem;
+    top: 23%;
     left: 4rem;
   }
 
   .sapo {
     position: absolute;
-    top: 0.6rem;
+    top: 21%;
     left: 4rem;
-    z-index: 0;
     width: 30px;
-    transform: rotate(25deg);
-  }
-
-  .personaje-fantasma {
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
-    mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
   }
 
   .brillo-varita {
     position: absolute;
-    width: 4vw;
-    height: 4vw;
+    width: 3.5vw;
     pointer-events: none;
     z-index: 10;
   }
 
-  /* Posiciones específicas según el tipo de personaje */
   .brillo-varita-principal-hombre {
-    top: -3rem;
-    right: 1.5rem;
+    position: absolute;
+    top: 1%;
+    right: 2.2rem;
     transform: rotate(-20deg) scale(0.8);
   }
 
   .brillo-varita-secundario-hombre {
-    top: 2.2rem;
+    position: absolute;
+    top: 30%;
     right: 3.7rem;
     transform: rotate(-35deg) scale(0.7);
   }
 
   .brillo-varita-principal-mujer {
-    top: -2.9rem;
+    position: absolute;
+    top: 1%;
     right: 1rem;
     transform: rotate(-30deg) scale(0.8);
   }
 
   .brillo-varita-secundario-mujer {
-    top: 1.8rem;
-    right: 3.4rem;
+    position: absolute;
+    top: 30%;
+    right: 3.6rem;
     transform: rotate(-40deg) scale(0.7);
   }
 
