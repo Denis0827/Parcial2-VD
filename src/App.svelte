@@ -526,7 +526,7 @@ function aplicarFiltro(categoria, valor) {
           <!-- Página izquierda -->
           <div class="catalogo-container book-page">
             {#each gruposPersonajes[grupoActualIndex].izquierda as personaje}
-              <div>
+              <div class="columna">
                 <div class="personaje-container superpuesto">
                   {#if personaje.genero == "Hombre"}
                     {#if personaje.protagonismo == "Principal"}
@@ -623,7 +623,7 @@ function aplicarFiltro(categoria, valor) {
           <!-- Página derecha -->
           <div class="catalogo-container book-page">
             {#each gruposPersonajes[grupoActualIndex].derecha as personaje}
-              <div>
+              <div class="columna">
                 <div class="personaje-container superpuesto">
                   {#if personaje.genero == "Hombre"}
                     {#if personaje.protagonismo == "Principal"}
