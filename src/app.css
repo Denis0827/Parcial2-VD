@@ -371,6 +371,55 @@
   color: white !important;
 }
 
+.filtro-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+  padding-top: 13vh;
+  padding-bottom: 8vh;
+}
+
+.filtro-titulo {
+  text-align: center;
+  padding-bottom: 3vh;
+  font-family: "HarryPotter", sans-serif;
+}
+
+.filtro-fila {
+  display: flex;
+  flex-direction: row;
+  gap: 4vw;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.filtro {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  gap: 20px;
+}
+
+.filtro-texto {
+  text-align: center;
+  font-weight: semi-bold;
+  font-size: 16px;
+  margin-top: 12px;
+}
+
+.resultados-container {
+  padding-top: 3rem;
+  padding-left: 8rem; 
+  padding-right: 8rem;
+}
+
+.nombre-personaje-resultados {
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
 /* Animaciones para el libro */
 
 @keyframes fadeOutLeft {
@@ -1612,7 +1661,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
   margin: 20px 0;
 }
 

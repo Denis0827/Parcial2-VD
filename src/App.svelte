@@ -93,11 +93,11 @@ let codigos = {
   codBajo: true,
   codUno: true,
   codDos: true,
-  codTres: true,      // NUEVO
-  codCuatro: true,    // NUEVO
-  codCinco: true,     // NUEVO
-  codSeis: true,      // NUEVO
-  codSiete: true,     // NUEVO
+  codTres: true,   
+  codCuatro: true,   
+  codCinco: true, 
+  codSeis: true,    
+  codSiete: true,    
   codLechuza: true,
   codGato: true,
   codSapo: true,
@@ -554,41 +554,42 @@ function aplicarFiltro(categoria, valor) {
       <!-- Imagen del libro como fondo -->
       <img src="/images/librofondo.jpeg" alt="Libro abierto" class="book-background">
         
-        <div class="book-pages">
-          <!-- Navegación del libro con event handlers corregidos -->
-<div class="book-navigation">
-  <!-- Flechas de navegación -->
-<button tabindex="0" class="nav-arrow nav-arrow-up" on:click={() => navegarGrupo('anterior')} disabled={grupoActualIndex === 0} aria-label="Previous Page">
-  <i class="bi bi-chevron-left"></i>
-</button>
+      <div class="book-pages">
+        <!-- Navegación del libro con event handlers corregidos -->
+        <div class="book-navigation">
+          <!-- Flechas de navegación -->
+          <button tabindex="0" class="nav-arrow nav-arrow-up" on:click={() => navegarGrupo('anterior')} disabled={grupoActualIndex === 0} aria-label="Previous Page">
+            <i class="bi bi-chevron-left"></i>
+          </button>
 
-<button tabindex="0" class="nav-arrow nav-arrow-down" on:click={() => navegarGrupo('siguiente')} disabled={grupoActualIndex === gruposPersonajes.length - 1} aria-label="Next Page">
-  <i class="bi bi-chevron-right"></i>
-</button>  
-  <!-- Indicador de páginas -->
-  <!-- Indicador de páginas con números -->
-<div class="page-indicators">
-  <span class="page-counter">Página {grupoActualIndex + 1} de {gruposPersonajes.length}</span>
-  <div class="page-dots">
-    {#each gruposPersonajes as grupo, index}
-      <div 
-        class="page-dot {index === grupoActualIndex ? 'active' : ''}"
-        on:click={() => navegarAPagina(index)}
-        on:keydown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            navegarAPagina(index);
-          }
-        }}
-        title="Página {index + 1}"
-        role="button"
-        tabindex="0"
-        aria-label="Ir a página {index + 1}"
-      ></div>
-    {/each}
-  </div>
-</div>
-</div>
+          <button tabindex="0" class="nav-arrow nav-arrow-down" on:click={() => navegarGrupo('siguiente')} disabled={grupoActualIndex === gruposPersonajes.length - 1} aria-label="Next Page">
+            <i class="bi bi-chevron-right"></i>
+          </button>  
+          <!-- Indicador de páginas -->
+          <!-- Indicador de páginas con números -->
+          <div class="page-indicators">
+            <span class="page-counter">Página {grupoActualIndex + 1} de {gruposPersonajes.length}</span>
+            <div class="page-dots">
+              {#each gruposPersonajes as grupo, index}
+                <div 
+                  class="page-dot {index === grupoActualIndex ? 'active' : ''}"
+                  on:click={() => navegarAPagina(index)}
+                  on:keydown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      navegarAPagina(index);
+                    }
+                  }}
+                  title="Página {index + 1}"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Ir a página {index + 1}"
+                ></div>
+              {/each}
+            </div>
+          </div>
+        </div>
+
           <div style="margin-top: 80vh;" id="libro-animado"> </div>
 
           <!-- Página izquierda -->
@@ -788,416 +789,261 @@ function aplicarFiltro(categoria, valor) {
         </div>
     </div>
 
-    <div class="codificacion-container color-fondo" id="codificacion">
-      <h1 class="cod-titulo">Codificación de las marcas</h1>
-      <div class="cod-fila">
+    <div class="filtro-container color-fondo" id="filtro">
+      <h1 class="filtro-titulo">Filtro de personajes</h1>
 
-        <div class="cod">
-          <div><p class="categoria-texto"><b>Género</b></p></div>
-          <div style="justify-content: center; display: flex;">
-            {#if codigos.codHombre}
-              <img style="height: 14vh;" src={imagenGenero["HombreSecu"] || "/placeholder.svg"} alt="HombreSecundario" />
-            {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["HombreSecu"] || "/placeholder.svg"} alt="HombreSecundario" />
-            {/if}
-            {#if codigos.codMujer}
-              <img style="height: 14vh;" src={imagenGenero["MujerSecu"] || "/placeholder.svg"} alt="MujerSecundaria" />
-            {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["MujerSecu"] || "/placeholder.svg"} alt="MujerSecundaria" />
-            {/if}
+      <div class="filtro-fila">
+
+        <div class="filtro">
+          <div><p class="filtro-texto"><b>Género</b></p></div>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button on:click={() => aplicarFiltro('genero', 'Hombre')} 
+              class="btn {filtrosActivos.genero === 'Hombre' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Hombre</button>
+            <button on:click={() => aplicarFiltro('genero', 'Mujer')} 
+              class="btn {filtrosActivos.genero === 'Mujer' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Mujer</button>          
           </div>
-
-          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
-<button on:click={() => aplicarFiltro('genero', 'Hombre')} 
-  class="btn {filtrosActivos.genero === 'Hombre' ? 'btn-primary' : 'btn-outline-primary'}">Hombre</button>
-<button on:click={() => aplicarFiltro('genero', 'Mujer')} 
-  class="btn {filtrosActivos.genero === 'Mujer' ? 'btn-primary' : 'btn-outline-primary'}">Mujer</button>          </div>
         </div>
 
-        <div class="cod">
-          <div><p class="categoria-texto"><b>Nivel de protagonismo</b></p></div>
-          <div class="cod-protagonismo-img">
-            {#if codigos.codPrincipal}
-              <img style="height: 14vh;" src={imagenGenero["HombrePri"] || "/placeholder.svg"} alt="HombrePrincipal" />
-              <img style="height: 14vh;" src={imagenGenero["MujerPri"] || "/placeholder.svg"} alt="MujerPrincipal" />
-            {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["HombrePri"] || "/placeholder.svg"} alt="HombrePrincipal" />
-              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["MujerPri"] || "/placeholder.svg"} alt="MujerPrincipal" />
-            {/if}
-            {#if codigos.codSecundario}
-              <img style="height: 14vh;" src={imagenGenero["HombreSecu"] || "/placeholder.svg"} alt="HombreSecundario" />
-              <img style="height: 14vh;" src={imagenGenero["MujerSecu"] || "/placeholder.svg"} alt="MujerSecundaria" />
-            {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["HombreSecu"] || "/placeholder.svg"} alt="HombreSecundario" />
-              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["MujerSecu"] || "/placeholder.svg"} alt="MujerSecundaria" />
-            {/if}
+        <div class="filtro">
+          <div><p class="filtro-texto"><b>Protagonismo</b></p></div>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button on:click={() => aplicarFiltro('protagonismo', 'Principal')} 
+              class="btn {filtrosActivos.protagonismo === 'Principal' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Principal</button>
+            <button on:click={() => aplicarFiltro('protagonismo', 'Secundario')} 
+              class="btn {filtrosActivos.protagonismo === 'Secundario' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Secundario</button>          
           </div>
-
-          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
-<button on:click={() => aplicarFiltro('protagonismo', 'Principal')} 
-  class="btn {filtrosActivos.protagonismo === 'Principal' ? 'btn-primary' : 'btn-outline-primary'}">Principal</button>
-<button on:click={() => aplicarFiltro('protagonismo', 'Secundario')} 
-  class="btn {filtrosActivos.protagonismo === 'Secundario' ? 'btn-primary' : 'btn-outline-primary'}">Secundario</button>          </div>
         </div>
 
-        <div class="cod">
-          <div><p class="categoria-texto"><b>Estado de vida</b></p></div>
-          <div style="justify-content: center; display: flex; align-items: flex-end;">
-            {#if codigos.codVivo}
-              <img style="height: 14vh;" src={imagenGenero["HombrePri"] || "/placeholder.svg"} alt="HombrePrincipal" />
-            {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["HombrePri"] || "/placeholder.svg"} alt="HombrePrincipal" />
-            {/if}
-            {#if codigos.codMuerto}
-              <img style="height: 14vh;" class="personaje-fantasma" src={imagenGenero["HombreSecu"] || "/placeholder.svg"} alt="HombreSecundario" />
-            {:else}
-              <img style="height: 14vh; opacity: 0.2;" src={imagenGenero["HombreSecu"] || "/placeholder.svg"} alt="HombreSecundario" />
-            {/if}
+        <div class="filtro">
+          <div><p class="filtro-texto"><b>Estado de vida</b></p></div>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button on:click={() => aplicarFiltro('vivo', true)} 
+              class="btn {filtrosActivos.vivo === true ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Vivo</button>
+            <button on:click={() => aplicarFiltro('vivo', false)} 
+              class="btn {filtrosActivos.vivo === false ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Muerto</button>          
           </div>
-
-          <div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
-<button on:click={() => aplicarFiltro('vivo', true)} 
-  class="btn {filtrosActivos.vivo === true ? 'btn-primary' : 'btn-outline-primary'}">Vivo</button>
-<button on:click={() => aplicarFiltro('vivo', false)} 
-  class="btn {filtrosActivos.vivo === false ? 'btn-primary' : 'btn-outline-primary'}">Muerto</button>          </div>
         </div>
+
       </div>
 
+      <div class="filtro-fila">
 
-      <div class="cod-fila">
-        <div class="cod">
-          <div>
-            <div><p class="categoria-texto"><b>Casa</b></p></div>
-            {#if codigos.codGryffindor}
-              <img style="height: 9vh;" src={imagenCasas["Gryffindor"] || "/placeholder.svg"} alt="Gryffindor" />
-            {:else}
-              <img style="height: 9vh; opacity: 0.2;" src={imagenCasas["Gryffindor"] || "/placeholder.svg"} alt="Gryffindor" />
-            {/if}
-            {#if codigos.codHufflepuff}
-              <img style="height: 9vh;" src={imagenCasas["Hufflepuff"] || "/placeholder.svg"} alt="Hufflepuff" />
-            {:else}
-              <img style="height: 9vh; opacity: 0.2;" src={imagenCasas["Hufflepuff"] || "/placeholder.svg"} alt="Hufflepuff" />
-            {/if}
-            {#if codigos.codRavenclaw}
-              <img style="height: 9vh;" src={imagenCasas["Ravenclaw"] || "/placeholder.svg"} alt="Ravenclaw" />
-            {:else}
-              <img style="height: 9vh; opacity: 0.2;" src={imagenCasas["Ravenclaw"] || "/placeholder.svg"} alt="Ravenclaw" />
-            {/if}
-            {#if codigos.codSlytherin}
-              <img style="height: 9vh;" src={imagenCasas["Slytherin"] || "/placeholder.svg"} alt="Slytherin" />
-            {:else}
-              <img style="height: 9vh; opacity: 0.2;" src={imagenCasas["Slytherin"] || "/placeholder.svg"} alt="Slytherin" />
-            {/if}
-          </div>
-
-<div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
-  <button on:click={() => aplicarFiltro('casa', 'Gryffindor')} 
-    class="btn {filtrosActivos.casa === 'Gryffindor' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Gryffindor</button>
-  <button on:click={() => aplicarFiltro('casa', 'Hufflepuff')} 
-    class="btn {filtrosActivos.casa === 'Hufflepuff' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Hufflepuff</button>
-  <button on:click={() => aplicarFiltro('casa', 'Ravenclaw')} 
-    class="btn {filtrosActivos.casa === 'Ravenclaw' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Ravenclaw</button>
-  <button on:click={() => aplicarFiltro('casa', 'Slytherin')} 
-    class="btn {filtrosActivos.casa === 'Slytherin' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Slytherin</button>
-</div>        </div>
-
-        <div class="cod">
-          <div>
-            <div><p class="categoria-texto"><b>Bando</b></p></div>
-            {#if codigos.codBueno}
-              <img style="height: 9vh;" src={imagenBando["Bueno"] || "/placeholder.svg"} alt="Bueno" />
-            {:else}
-              <img style="height: 9vh; opacity: 0.2;" src={imagenBando["Malo"] || "/placeholder.svg"} alt="Bueno" />
-            {/if}
-            {#if codigos.codMalo}
-              <img style="height: 9vh;" src={imagenBando["Malo"] || "/placeholder.svg"} alt="Malo" />
-            {:else}
-              <img style="height: 9vh; opacity: 0.2;" src={imagenBando["Bueno"] || "/placeholder.svg"} alt="Malo" />
-            {/if}
-          </div>
-
-<div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
-  <button on:click={() => aplicarFiltro('bando', 'Bueno')} 
-    class="btn {filtrosActivos.bando === 'Bueno' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Bueno</button>
-  <button on:click={() => aplicarFiltro('bando', 'Malo')} 
-    class="btn {filtrosActivos.bando === 'Malo' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Malo</button>
-</div>        </div>
-
-        <div class="cod">
-          <div>
-            <div><p class="categoria-texto"><b>Nivel de magia</b></p></div>
-            {#if codigos.codAlto}
-              <img style="height: 9vh; opacity: {luminosidadBrillo(1)}" src={imagenMagia || "/placeholder.svg"} alt="Alto" />
-            {:else}
-              <img style="height: 9vh; opacity: 0.2;" src={imagenMagia || "/placeholder.svg"} alt="Alto" />
-            {/if}
-            {#if codigos.codMedio}
-              <img style="height: 9vh; opacity: {luminosidadBrillo(2)}" src={imagenMagia || "/placeholder.svg"} alt="Medio" />
-            {:else}
-              <img style="height: 9vh; opacity: 0.2;" src={imagenMagia || "/placeholder.svg"} alt="Medio" />
-            {/if}
-            {#if codigos.codBajo}
-              <img style="height: 9vh; opacity: {luminosidadBrillo(3)}" src={imagenMagia || "/placeholder.svg"} alt="Bajo" />
-            {:else}
-              <img style="height: 9vh; opacity: 0.2;" src={imagenMagia || "/placeholder.svg"} alt="Bajo" />
-            {/if}
-          </div>
-
-<div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
-  <button on:click={() => aplicarFiltro('nivel_magia', 1)} 
-    class="btn {filtrosActivos.nivel_magia === 1 ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">1</button>
-  <button on:click={() => aplicarFiltro('nivel_magia', 2)} 
-    class="btn {filtrosActivos.nivel_magia === 2 ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">2</button>
-  <button on:click={() => aplicarFiltro('nivel_magia', 3)} 
-    class="btn {filtrosActivos.nivel_magia === 3 ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">3</button>
-</div>        </div>
-      </div>
-
-      <div class="cod-fila">
-<div class="cod">
-          <div>
-            <div><p class="categoria-texto"><b>Apariciones en libros</b></p></div>
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; align-items: flex-end;">
-  {#if codigos.codUno}
-    <img style="height: 3vh;" src={imagenLibros[1] || "/placeholder.svg"} alt="Libro 1" />
-  {:else}
-    <img style="height: 3vh; opacity: 0.2;" src={imagenLibros[1] || "/placeholder.svg"} alt="Libro 1" />
-  {/if}
-  {#if codigos.codDos}
-    <img style="height: 3.5vh;" src={imagenLibros[2] || "/placeholder.svg"} alt="Libro 2" />
-  {:else}
-    <img style="height: 3.5vh; opacity: 0.2;" src={imagenLibros[2] || "/placeholder.svg"} alt="Libro 2" />
-  {/if}
-  {#if codigos.codTres}
-    <img style="height: 4vh;" src={imagenLibros[3] || "/placeholder.svg"} alt="Libro 3" />
-  {:else}
-    <img style="height: 4vh; opacity: 0.2;" src={imagenLibros[3] || "/placeholder.svg"} alt="Libro 3" />
-  {/if}
-  {#if codigos.codCuatro}
-    <img style="height: 4.5vh;" src={imagenLibros[4] || "/placeholder.svg"} alt="Libro 4" />
-  {:else}
-    <img style="height: 4.5vh; opacity: 0.2;" src={imagenLibros[4] || "/placeholder.svg"} alt="Libro 4" />
-  {/if}
-  {#if codigos.codCinco}
-    <img style="height: 5vh;" src={imagenLibros[5] || "/placeholder.svg"} alt="Libro 5" />
-  {:else}
-    <img style="height: 5vh; opacity: 0.2;" src={imagenLibros[5] || "/placeholder.svg"} alt="Libro 5" />
-  {/if}
-  {#if codigos.codSeis}
-    <img style="height: 5.5vh;" src={imagenLibros[6] || "/placeholder.svg"} alt="Libro 6" />
-  {:else}
-    <img style="height: 5.5vh; opacity: 0.2;" src={imagenLibros[6] || "/placeholder.svg"} alt="Libro 6" />
-  {/if}
-  {#if codigos.codSiete}
-    <img style="height: 6vh;" src={imagenLibros[7] || "/placeholder.svg"} alt="Libro 7" />
-  {:else}
-    <img style="height: 6vh; opacity: 0.2;" src={imagenLibros[7] || "/placeholder.svg"} alt="Libro 7" />
-  {/if}
-</div>
-          </div>
-
-<div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
-            <button on:click={() => aplicarFiltro('libros', 1)}
-              class="btn {filtrosActivos.libros === 1 ? 'btn-primary' : 'btn-outline-primary'}"
-              style="font-size: 12px;">1</button>
-            <button on:click={() => aplicarFiltro('libros', 2)}
-              class="btn {filtrosActivos.libros === 2 ? 'btn-primary' : 'btn-outline-primary'}"
-              style="font-size: 12px;">2</button>
-            <button on:click={() => aplicarFiltro('libros', 3)}
-              class="btn {filtrosActivos.libros === 3 ? 'btn-primary' : 'btn-outline-primary'}"
-              style="font-size: 12px;">3</button>
-            <button on:click={() => aplicarFiltro('libros', 4)}
-              class="btn {filtrosActivos.libros === 4 ? 'btn-primary' : 'btn-outline-primary'}"
-              style="font-size: 12px;">4</button>
-            <button on:click={() => aplicarFiltro('libros', 5)}
-              class="btn {filtrosActivos.libros === 5 ? 'btn-primary' : 'btn-outline-primary'}"
-              style="font-size: 12px;">5</button>
-            <button on:click={() => aplicarFiltro('libros', 6)}
-              class="btn {filtrosActivos.libros === 6 ? 'btn-primary' : 'btn-outline-primary'}"
-              style="font-size: 12px;">6</button>
-            <button on:click={() => aplicarFiltro('libros', 7)}
-              class="btn {filtrosActivos.libros === 7 ? 'btn-primary' : 'btn-outline-primary'}"
-              style="font-size: 12px;">7</button>
-          </div>
+        <div class="filtro">
+          <div><p class="filtro-texto"><b>Casa</b></p></div>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button on:click={() => aplicarFiltro('casa', 'Gryffindor')} 
+              class="btn {filtrosActivos.casa === 'Gryffindor' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Gryffindor</button>
+            <button on:click={() => aplicarFiltro('casa', 'Hufflepuff')} 
+              class="btn {filtrosActivos.casa === 'Hufflepuff' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Hufflepuff</button>
+            <button on:click={() => aplicarFiltro('casa', 'Ravenclaw')} 
+              class="btn {filtrosActivos.casa === 'Ravenclaw' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Ravenclaw</button>
+            <button on:click={() => aplicarFiltro('casa', 'Slytherin')} 
+              class="btn {filtrosActivos.casa === 'Slytherin' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Slytherin</button>
+          </div>        
+        </div>
+        
+        <div class="filtro">
+          <div><p class="filtro-texto"><b>Bando</b></p></div>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button on:click={() => aplicarFiltro('bando', 'Bueno')} 
+              class="btn {filtrosActivos.bando === 'Bueno' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Bueno</button>
+            <button on:click={() => aplicarFiltro('bando', 'Malo')} 
+              class="btn {filtrosActivos.bando === 'Malo' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Malo</button>
+          </div>        
         </div>
 
-        <div class="cod">
-          <div style="display: flex; flex-direction: column; align-items: center;">
-            <div><p class="categoria-texto"><b>Mascota (si tiene)</b></p></div>
-            <div class="cod-mascotas-img">
-              {#if codigos.codLechuza}
-                <img style="height: 6vh;" src={imagenMascotas["Lechuza"] || "/placeholder.svg"} alt="Lechuza" />
-              {:else}
-                <img style="height: 6vh; opacity: 0.2;" src={imagenMascotas["Lechuza"] || "/placeholder.svg"} alt="Lechuza" />
-              {/if}
-              {#if codigos.codGato}
-                <img style="height: 9vh;" src={imagenMascotas["Gato"] || "/placeholder.svg"} alt="Gato" />
-              {:else}
-                <img style="height: 9vh; opacity: 0.2;" src={imagenMascotas["Gato"] || "/placeholder.svg"} alt="Gato" />
-              {/if}
-              {#if codigos.codSapo}
-                <img style="height: 4vh;" src={imagenMascotas["Sapo"] || "/placeholder.svg"} alt="Sapo" />
-              {:else}
-                <img style="height: 4vh; opacity: 0.2;" src={imagenMascotas["Sapo"] || "/placeholder.svg"} alt="Sapo" />
-              {/if}
-              {#if codigos.codRata}
-                <img style="height: 4vh;" src={imagenMascotas["Rata"] || "/placeholder.svg"} alt="Rata" />
-              {:else}
-                <img style="height: 4vh; opacity: 0.2;" src={imagenMascotas["Rata"] || "/placeholder.svg"} alt="Rata" />
-              {/if}
-              {#if codigos.codPhoenix}
-                <img  alt="Rata" />
-              {/if}
-              {#if codigos.codPhoenix}
-                <img style="height: 12vh;" src={imagenMascotas["Phoenix"] || "/placeholder.svg"} alt="Phoenix" />
-              {:else}
-                <img style="height: 12vh; opacity: 0.2;" src={imagenMascotas["Phoenix"] || "/placeholder.svg"} alt="Phoenix" />
-              {/if}
+        <div class="filtro">
+          <div><p class="filtro-texto"><b>Nivel de magia</b></p></div>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button on:click={() => aplicarFiltro('nivel_magia', 1)} 
+              class="btn {filtrosActivos.nivel_magia === 1 ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">1</button>
+            <button on:click={() => aplicarFiltro('nivel_magia', 2)} 
+              class="btn {filtrosActivos.nivel_magia === 2 ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">2</button>
+            <button on:click={() => aplicarFiltro('nivel_magia', 3)} 
+              class="btn {filtrosActivos.nivel_magia === 3 ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">3</button>
+          </div>        
+        </div>
+      
+      </div>
+
+      <div class="filtro-fila">
+        
+        <div class="filtro">
+          <div><p class="filtro-texto"><b>Apariciones en libros</b></p></div>
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+              <button on:click={() => aplicarFiltro('libros', 1)}
+                class="btn {filtrosActivos.libros === 1 ? 'btn-primary' : 'btn-outline-primary'}"
+                style="font-size: 14px;">1</button>
+              <button on:click={() => aplicarFiltro('libros', 2)}
+                class="btn {filtrosActivos.libros === 2 ? 'btn-primary' : 'btn-outline-primary'}"
+                style="font-size: 14px;">2</button>
+              <button on:click={() => aplicarFiltro('libros', 3)}
+                class="btn {filtrosActivos.libros === 3 ? 'btn-primary' : 'btn-outline-primary'}"
+                style="font-size: 14px;">3</button>
+              <button on:click={() => aplicarFiltro('libros', 4)}
+                class="btn {filtrosActivos.libros === 4 ? 'btn-primary' : 'btn-outline-primary'}"
+                style="font-size: 14px;">4</button>
+              <button on:click={() => aplicarFiltro('libros', 5)}
+                class="btn {filtrosActivos.libros === 5 ? 'btn-primary' : 'btn-outline-primary'}"
+                style="font-size: 14px;">5</button>
+              <button on:click={() => aplicarFiltro('libros', 6)}
+                class="btn {filtrosActivos.libros === 6 ? 'btn-primary' : 'btn-outline-primary'}"
+                style="font-size: 14px;">6</button>
+              <button on:click={() => aplicarFiltro('libros', 7)}
+                class="btn {filtrosActivos.libros === 7 ? 'btn-primary' : 'btn-outline-primary'}"
+                style="font-size: 14px;">7</button>
             </div>
+        </div>
 
-          </div>
-
-<div style="margin-top: 18px;" class="btn-group" role="group" aria-label="Basic outlined example">
-  <button on:click={() => aplicarFiltro('mascota', 'Lechuza')}
-    class="btn {filtrosActivos.mascota === 'Lechuza' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Lechuza</button>
-  <button on:click={() => aplicarFiltro('mascota', 'Gato')}
-    class="btn {filtrosActivos.mascota === 'Gato' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Gato</button>
-  <button on:click={() => aplicarFiltro('mascota', 'Sapo')}
-    class="btn {filtrosActivos.mascota === 'Sapo' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Sapo</button>
-  <button on:click={() => aplicarFiltro('mascota', 'Rata')}
-    class="btn {filtrosActivos.mascota === 'Rata' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Rata</button>
-  <button on:click={() => aplicarFiltro('mascota', 'Phoenix')}
-    class="btn {filtrosActivos.mascota === 'Phoenix' ? 'btn-primary' : 'btn-outline-primary'}"
-    style="font-size: 14px;">Phoenix</button>
-</div>        </div>
+        <div class="filtro">
+          <div><p class="filtro-texto"><b>Mascota</b></p></div>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button on:click={() => aplicarFiltro('mascota', 'Lechuza')}
+              class="btn {filtrosActivos.mascota === 'Lechuza' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Lechuza</button>
+            <button on:click={() => aplicarFiltro('mascota', 'Gato')}
+              class="btn {filtrosActivos.mascota === 'Gato' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Gato</button>
+            <button on:click={() => aplicarFiltro('mascota', 'Sapo')}
+              class="btn {filtrosActivos.mascota === 'Sapo' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Sapo</button>
+            <button on:click={() => aplicarFiltro('mascota', 'Rata')}
+              class="btn {filtrosActivos.mascota === 'Rata' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Rata</button>
+            <button on:click={() => aplicarFiltro('mascota', 'Phoenix')}
+              class="btn {filtrosActivos.mascota === 'Phoenix' ? 'btn-primary' : 'btn-outline-primary'}"
+              style="font-size: 14px;">Phoenix</button>
+          </div>        
+        </div>
+      
       </div>
 
-    </div>
-
-<!-- Sección de resultados filtrados -->
-<div class="resultados-container color-fondo" style="padding: 2rem;">
-  <h2 class="text-center mb-4">Personajes que coinciden con los filtros</h2>
-  
-  {#if personajesFiltrados.length === 0}
-    <div class="text-center">
-      <h3>No se encontraron personajes que coincidan con los filtros seleccionados</h3>
-      <p>Intenta ajustar los filtros para ver más resultados</p>
-    </div>
-  {:else}
-    <div class="personajes-filtrados-grid">
-      {#each personajesFiltrados as personaje}
-        <div class="personaje-filtrado">
-          <div class="personaje-container superpuesto">
-            {#if personaje.genero == "Hombre"}
-              {#if personaje.protagonismo == "Principal"}
-                <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["HombrePri"] || "/placeholder.svg"} alt="HombrePrincipal" />
-                <!-- Brillo de varita según nivel de magia -->
-                <img 
-                  class="brillo-varita brillo-varita-principal-hombre" 
-                  src={imagenMagia || "/placeholder.svg"} 
-                  alt="Brillo" 
-                  style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
-                />
-              {:else}
-                <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["HombreSecu"] || "/placeholder.svg"} alt="HombreSecundario" />
-                <!-- Brillo de varita según nivel de magia -->
-                <img 
-                  class="brillo-varita brillo-varita-secundario-hombre" 
-                  src={imagenMagia || "/placeholder.svg"} 
-                  alt="Brillo" 
-                  style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
-                />
-              {/if}
-            {:else}
-              {#if personaje.protagonismo == "Principal"}
-                <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" style="left: 8px;" src={imagenGenero["MujerPri"] || "/placeholder.svg"} alt="MujerPrincipal" />
-                <!-- Brillo de varita según nivel de magia -->
-                <img 
-                  class="brillo-varita brillo-varita-principal-mujer" 
-                  src={imagenMagia || "/placeholder.svg"} 
-                  alt="Brillo" 
-                  style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
-                />
-              {:else}
-                <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["MujerSecu"] || "/placeholder.svg"} alt="MujerSecundaria" />
-                <!-- Brillo de varita según nivel de magia -->
-                <img 
-                  class="brillo-varita brillo-varita-secundario-mujer" 
-                  src={imagenMagia || "/placeholder.svg"} 
-                  alt="Brillo" 
-                  style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
-                />
-              {/if}
-            {/if}
-            
-            {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
-              {#if personaje.bando == "Bueno"}
-                <img class="sombrero sombrero_hp" src={imagenBando["Bueno"] || "/placeholder.svg"} alt="Bando" />
-              {:else}
-                <img class="sombrero sombrero_hp" src={imagenBando["Malo"] || "/placeholder.svg"} alt="Bando" />
-              {/if}
-              <img class="libros libros_hp" src={imagenLibros[personaje.libros] || "/placeholder.svg"} alt="Libros" />
-              <img class="casa casa_hp" src={imagenCasas[personaje.casa] || "/placeholder.svg"} alt="Casa" />
-            {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
-              {#if personaje.bando == "Bueno"}
-                <img class="sombrero sombrero_mp" src={imagenBando["Bueno"] || "/placeholder.svg"} alt="Bando" />
-              {:else}
-                <img class="sombrero sombrero_mp" src={imagenBando["Malo"] || "/placeholder.svg"} alt="Bando" />
-              {/if}
-              <img class="libros libros_mp" src={imagenLibros[personaje.libros] || "/placeholder.svg"} alt="Libros" />
-              <img class="casa casa_mp" src={imagenCasas[personaje.casa] || "/placeholder.svg"} alt="Casa" />
-            {:else}
-              {#if personaje.bando == "Bueno"}
-                <img class="sombrero" src={imagenBando["Bueno"] || "/placeholder.svg"} alt="Bando" />
-              {:else}
-                <img class="sombrero" src={imagenBando["Malo"] || "/placeholder.svg"} alt="Bando" />
-              {/if}
-              <img class="libros" src={imagenLibros[personaje.libros] || "/placeholder.svg"} alt="Libros" />
-              <img class="casa" src={imagenCasas[personaje.casa] || "/placeholder.svg"} alt="Casa" />
-            {/if}
-
-            {#if personaje.mascota == "Gato"}
-              <img class="gato" src={imagenMascotas["Gato"] || "/placeholder.svg"} alt="Gato" />
-            {:else if personaje.mascota == "Lechuza"}
-              <img class="lechuza" src={imagenMascotas["Lechuza"] || "/placeholder.svg"} alt="Lechuza" />
-            {:else if personaje.mascota == "Sapo"}
-              <img class="sapo" src={imagenMascotas["Sapo"] || "/placeholder.svg"} alt="Sapo" />
-            {:else if personaje.mascota == "Rata"}
-              {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
-                <img class="rata rata_hp" src={imagenMascotas["Rata"] || "/placeholder.svg"} alt="Rata" />
-              {:else}
-                <img class="rata" src={imagenMascotas["Rata"] || "/placeholder.svg"} alt="Rata" />
-            {/if}
-            {:else if personaje.mascota == "Phoenix"}
-              <img class="phoenix" src={imagenMascotas["Phoenix"] || "/placeholder.svg"} alt="Phoenix" />
-            {/if}
+      <!-- Sección de resultados filtrados -->
+      <div class="resultados-container color-fondo">
+        
+        {#if personajesFiltrados.length === 0}
+          <div class="text-center">
+            <h3>No se encontraron personajes que coincidan con los filtros seleccionados</h3>
+            <p>Intenta ajustar los filtros para ver más resultados</p>
           </div>
+        {:else}
+          <div class="personajes-filtrados-grid">
+            {#each personajesFiltrados as personaje}
+              <div class="personaje-filtrado">
+                <div class="personaje-container superpuesto">
+                  {#if personaje.genero == "Hombre"}
+                    {#if personaje.protagonismo == "Principal"}
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["HombrePri"] || "/placeholder.svg"} alt="HombrePrincipal" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-principal-hombre" 
+                        src={imagenMagia || "/placeholder.svg"} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
+                    {:else}
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["HombreSecu"] || "/placeholder.svg"} alt="HombreSecundario" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-secundario-hombre" 
+                        src={imagenMagia || "/placeholder.svg"} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
+                    {/if}
+                  {:else}
+                    {#if personaje.protagonismo == "Principal"}
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" style="left: 8px;" src={imagenGenero["MujerPri"] || "/placeholder.svg"} alt="MujerPrincipal" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-principal-mujer" 
+                        src={imagenMagia || "/placeholder.svg"} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
+                    {:else}
+                      <img class="personaje {!personaje.vivo ? 'personaje-fantasma' : ''}" src={imagenGenero["MujerSecu"] || "/placeholder.svg"} alt="MujerSecundaria" />
+                      <!-- Brillo de varita según nivel de magia -->
+                      <img 
+                        class="brillo-varita brillo-varita-secundario-mujer" 
+                        src={imagenMagia || "/placeholder.svg"} 
+                        alt="Brillo" 
+                        style="opacity: {luminosidadBrillo(personaje.nivel_magia)}"
+                      />
+                    {/if}
+                  {/if}
+                  
+                  {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
+                    {#if personaje.bando == "Bueno"}
+                      <img class="sombrero sombrero_hp" src={imagenBando["Bueno"] || "/placeholder.svg"} alt="Bando" />
+                    {:else}
+                      <img class="sombrero sombrero_hp" src={imagenBando["Malo"] || "/placeholder.svg"} alt="Bando" />
+                    {/if}
+                    <img class="libros libros_hp" src={imagenLibros[personaje.libros] || "/placeholder.svg"} alt="Libros" />
+                    <img class="casa casa_hp" src={imagenCasas[personaje.casa] || "/placeholder.svg"} alt="Casa" />
+                  {:else if personaje.genero == "Mujer" && personaje.protagonismo == "Principal"}
+                    {#if personaje.bando == "Bueno"}
+                      <img class="sombrero sombrero_mp" src={imagenBando["Bueno"] || "/placeholder.svg"} alt="Bando" />
+                    {:else}
+                      <img class="sombrero sombrero_mp" src={imagenBando["Malo"] || "/placeholder.svg"} alt="Bando" />
+                    {/if}
+                    <img class="libros libros_mp" src={imagenLibros[personaje.libros] || "/placeholder.svg"} alt="Libros" />
+                    <img class="casa casa_mp" src={imagenCasas[personaje.casa] || "/placeholder.svg"} alt="Casa" />
+                  {:else}
+                    {#if personaje.bando == "Bueno"}
+                      <img class="sombrero" src={imagenBando["Bueno"] || "/placeholder.svg"} alt="Bando" />
+                    {:else}
+                      <img class="sombrero" src={imagenBando["Malo"] || "/placeholder.svg"} alt="Bando" />
+                    {/if}
+                    <img class="libros" src={imagenLibros[personaje.libros] || "/placeholder.svg"} alt="Libros" />
+                    <img class="casa" src={imagenCasas[personaje.casa] || "/placeholder.svg"} alt="Casa" />
+                  {/if}
 
-          <div class="nombre-personaje">
-            <p style="margin-top: 8px;">{personaje.personaje}</p>
+                  {#if personaje.mascota == "Gato"}
+                    <img class="gato" src={imagenMascotas["Gato"] || "/placeholder.svg"} alt="Gato" />
+                  {:else if personaje.mascota == "Lechuza"}
+                    <img class="lechuza" src={imagenMascotas["Lechuza"] || "/placeholder.svg"} alt="Lechuza" />
+                  {:else if personaje.mascota == "Sapo"}
+                    <img class="sapo" src={imagenMascotas["Sapo"] || "/placeholder.svg"} alt="Sapo" />
+                  {:else if personaje.mascota == "Rata"}
+                    {#if personaje.genero == "Hombre" && personaje.protagonismo == "Principal"}
+                      <img class="rata rata_hp" src={imagenMascotas["Rata"] || "/placeholder.svg"} alt="Rata" />
+                    {:else}
+                      <img class="rata" src={imagenMascotas["Rata"] || "/placeholder.svg"} alt="Rata" />
+                  {/if}
+                  {:else if personaje.mascota == "Phoenix"}
+                    <img class="phoenix" src={imagenMascotas["Phoenix"] || "/placeholder.svg"} alt="Phoenix" />
+                  {/if}
+                </div>
+
+                <div class="nombre-personaje-resultados">
+                  <p style="margin-top: 8px;">{personaje.personaje}</p>
+                </div>
+
+              </div>
+            {/each}
           </div>
-        </div>
-      {/each}
-    </div>
-    
-    <p class="text-center mt-3">
-      <strong>{personajesFiltrados.length}</strong> personaje{personajesFiltrados.length !== 1 ? 's' : ''} encontrado{personajesFiltrados.length !== 1 ? 's' : ''}
-    </p>
-  {/if}
-</div>
+          
+          <p class="text-center mt-3">
+            <strong>{personajesFiltrados.length}</strong> personaje{personajesFiltrados.length !== 1 ? 's' : ''} encontrado{personajesFiltrados.length !== 1 ? 's' : ''}
+          </p>
+        {/if}
+      </div>
     
   </main>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
