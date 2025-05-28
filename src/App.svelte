@@ -313,7 +313,7 @@ function aplicarFiltro(categoria, valor) {
 
   </div>
 
-  <div class="bajada color-fondo">
+  <div class="bajada color-fondo2">
     <img src="/images/banderas.png" width="300" alt="banderas">
     <div>
       <h2 style="font-family: 'HarryPotter'; font-size: 45px;">Descubre tu casa de <br> Hogwarts</h2>
@@ -324,7 +324,7 @@ function aplicarFiltro(categoria, valor) {
     </div>
   </div>
 
-  <div class="color-fondo2" id="codificacion" style="padding: 3rem;">
+  <div class="color-fondo" id="codificacion" style="padding: 3rem;">
     <h1 class="cod-titulo">Codificación de las marcas</h1>
     <div class="cod-fila">
 
@@ -476,7 +476,7 @@ function aplicarFiltro(categoria, valor) {
     </div>
   </div>
 
-    <div style="padding: 2rem;" id="representacion" class="color-fondo2">
+    <div style="padding: 2rem;" id="representacion" class="color-fondo">
     </div>
                 
     <div class="book-container" >
@@ -979,10 +979,14 @@ function aplicarFiltro(categoria, valor) {
     
   </main>
 
-  <footer>
-    <div>
-    
-    </div>
+  <footer class="footer-container color-fondo2">
+    <p>
+      Proyecto II: Marcas y Canales <br>
+      Visualización de Datos - Licenciatura en Tecnología Digital 2025 <br>
+    </p>
+    <p>
+      Josefina Casas Pardo, Luisina Cubilledo y Denis Wu
+    </p>
   </footer> 
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
