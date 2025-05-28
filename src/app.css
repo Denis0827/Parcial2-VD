@@ -1,13 +1,13 @@
 :root {
-  --color_nav: rgb(160, 112, 69);
+  --color-nav: linear-gradient(135deg, #2c1810 0%, #3d2817 50%, #2c1810 100%);
 }
 
 .color-fondo {
-  background-color: #9b7a5d;
+  background-color: #dcbf88;
 }
 
 .color-fondo2 {
-  background-color: rgb(172, 131, 96);
+  background-color: #1b2a41;
 }
 
 @font-face {
@@ -17,13 +17,203 @@
   font-style: normal;
 }
 
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 20px;
-  padding-bottom: 80px;
+:root {
+  --color-nav: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  --color-gold: #daac01;
+  --color-gold-light: #f7d566;
+  --color-dark: #1a0f0a;
+  --color-text: #f5f5dc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #1a0f0a 0%, #2c1810 100%);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+.magical-header {
+  background: var(--color-nav);
+  height: 80px;
+  border-bottom: 3px solid var(--color-gold);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3),
+    inset 0 1px 0 rgba(244, 228, 166, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.1),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+  z-index: 0;
+}
+
+.navbar > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.project-title {
+  font-family: "Cinzel", serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.project-subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-gold-light);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+.navbar-nav .nav-link {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-text) !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  padding: 0.8rem 1.2rem !important;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.navbar-nav .nav-link:hover::before {
+  left: 100%;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--color-gold) !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.8);
+  transform: translateY(-2px);
+}
+
+.navbar-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--color-gold-light) !important;
+  font-size: 1rem;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.navbar-toggler {
+  border: 1px solid var(--color-gold);
+  padding: 0.4rem 0.6rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23d4af37' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.ornament {
+  color: var(--color-gold);
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  opacity: 0.7;
+}
+
+/* Animation for magical sparkles */
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.sparkle {
+  position: absolute;
+  color: var(--color-gold);
+  font-size: 0.8rem;
+  animation: sparkle 2s infinite;
+}
+
+.sparkle:nth-child(1) {
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+.sparkle:nth-child(2) {
+  top: 70%;
+  left: 85%;
+  animation-delay: 0.7s;
+}
+.sparkle:nth-child(3) {
+  top: 30%;
+  left: 75%;
+  animation-delay: 1.4s;
+}
+
+@media (max-width: 768px) {
+  .project-title {
+    font-size: 1.4rem;
+  }
+  .project-subtitle {
+    font-size: 0.85rem;
+  }
+  .navbar-text {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
 }
 
 .home {
@@ -82,7 +272,7 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
-  padding-top: 7rem;
+  padding-top: 3rem;
   padding-bottom: 3rem;
 }
 
@@ -111,8 +301,6 @@
   background-color: rgb(90, 46, 166);
 }
 
-
-
 .book-container {
   position: relative;
   width: 100%;
@@ -127,8 +315,8 @@
 
 .book-pages {
   position: absolute;
-  top: 17vh;
-  left: 11%;
+  top: 15%;
+  left: 10%;
   width: 75%;
   height: 70%;
   display: flex;
@@ -145,17 +333,16 @@
 
 .catalogo-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45px, 12vw));
-  gap: 15px 1px;
+  grid-template-columns: repeat(auto-fit, minmax(45px, 200px));
+  gap: 5px 13px;
   grid-auto-rows: 438px;
   align-items: flex-end;
   max-width: 50vw;
 }
 
 .personaje-container {
-  position: relative;
   width: 6rem;
-  height: 30vh;
+  height: 15.8em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -168,7 +355,6 @@
 
 .personaje {
   position: absolute;
-  top: 10%;
   z-index: 1;
   width: 32vw;
   height: 28vh;
@@ -176,51 +362,52 @@
 
 .casa {
   position: absolute;
-  top: 24%;
-  left: 1.95rem;
-  height: 8.5vh;
+  top: 4.1rem;
+  left: 1.4rem;
+  width: 70px;
+  height: 70px;
   z-index: 2;
 }
 
 .casa_hp {
-  left: 2.2rem;
-  top: 29%;
+  left: 1.75vw;
+  top: 10.5vh;
 }
 
 .casa_mp {
-  left: 1.6rem;
-  top: 33%;
+  left: 1.4vw;
+  top: 11.5vh;
 }
 
 .sombrero {
   position: absolute;
-  top: 1%;
-  left: 2.2rem;
+  top: 1rem;
+  left: 2.4rem;
   width: 2.5vw;
   z-index: 2;
 }
 
 .sombrero_hp {
-  left: 2.5rem;
-  top: 5%;
+  left: 2.7vw;
+  top: 3vh;
 }
 
 .sombrero_mp {
-  left: 2rem;
-  top: 9%;
+  left: 2.4vw;
+  top: 4.5vh;
 }
 
 .libros {
   position: static;
   margin-bottom: 0;
-  margin-right: -90px;
+  margin-right: -85px;
   left: auto;
   top: auto;
   width: 3vw;
 }
 
 .libros_hp {
-  margin-right: -5.9vw;
+  margin-right: -6vw;
 }
 
 .libros_mp {
@@ -229,16 +416,16 @@
 
 .gato {
   position: absolute;
-  top: 58%;
-  left: -9px;
+  top: 21vh;
+  left: 0px;
   z-index: 0;
   width: 6vw;
 }
 
 .phoenix {
   position: absolute;
-  top: 1%;
-  left: 4.5rem;
+  top: 0;
+  left: 4.5vw;
   z-index: 0;
   width: 160px;
   height: 160px;
@@ -246,8 +433,8 @@
 
 .lechuza {
   position: absolute;
-  top: 8%;
-  left: 4.4vw;
+  top: 3.5vh;
+  left: 5vw;
   transform: scaleX(-1);
   z-index: 0;
   width: 60px;
@@ -255,34 +442,43 @@
 
 .rata {
   position: absolute;
-  top: 18%;
-  left: 3.8rem;
+  top: 6.7vh;
+  left: 4vw;
   z-index: 0;
   width: 30px;
 }
 
 .rata_hp {
-  top: 23%;
-  left: 4rem;
+  top: 8.2vh;
 }
 
 .sapo {
   position: absolute;
-  top: 21%;
-  left: 4rem;
+  top: 7.7vh;
+  left: 4.2vw;
   z-index: 0;
   width: 30px;
   transform: rotate(25deg);
 }
 
 .personaje-fantasma {
-  -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
-  mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 1) 50%);
+  -webkit-mask-image: linear-gradient(
+    to top,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 30%,
+    rgba(0, 0, 0, 1) 50%
+  );
+  mask-image: linear-gradient(
+    to top,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 30%,
+    rgba(0, 0, 0, 1) 50%
+  );
 }
 
 .brillo-varita {
   position: absolute;
-  width: 3.5vw;
+  width: 4vw;
   height: 4vw;
   pointer-events: none;
   z-index: 10;
@@ -290,39 +486,34 @@
 
 /* Posiciones específicas según el tipo de personaje */
 .brillo-varita-principal-hombre {
-  position: absolute; 
-  top: -5%;
-  right: 2vw;
+  top: 0.5vh;
+  right: 2.2vw;
   transform: rotate(-20deg) scale(0.8);
 }
 
 .brillo-varita-secundario-hombre {
-  position: absolute;
-  top: 30%;
-  right: 4vw;
+  top: 11vh;
+  right: 4.2vw;
   transform: rotate(-35deg) scale(0.7);
 }
 
 .brillo-varita-principal-mujer {
-  position: absolute;
-  top: 0.1%;
-  right: 1vw;
+  top: 0.5vh;
+  right: 1.5vw;
   transform: rotate(-30deg) scale(0.8);
 }
 
 .brillo-varita-secundario-mujer {
-  position: absolute;
-  top: 30%;
+  top: 11vh;
   right: 4vw;
   transform: rotate(-40deg) scale(0.7);
 }
 
 .nombre-personaje {
   text-align: center;
-  padding: 0 70px 0 0;
-  font-size: 11px;
+  padding: 0 80px 0 0;
+  font-size: 12px;
   font-weight: bold;
-  padding-top: 10px;
 }
 
 .codificacion-container {
@@ -405,7 +596,7 @@
 .filtro {
   display: flex;
   flex-direction: row;
-  align-items: center; 
+  align-items: center;
   gap: 20px;
 }
 
@@ -418,7 +609,7 @@
 
 .resultados-container {
   padding-top: 3rem;
-  padding-left: 8rem; 
+  padding-left: 8rem;
   padding-right: 8rem;
 }
 
@@ -503,17 +694,19 @@
 
 .nav-arrow {
   position: absolute;
-  background: rgba(139, 69, 19, 0.8);
+  background: rgba(27, 42, 65, 0.8);
   border: none;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  color: white;
+  color: #cabda1;
   font-size: 20px;
   cursor: pointer;
   pointer-events: all;
   transition: all 0.3s ease;
   z-index: 10;
+  box-shadow: 0 0 0 0.2rem rgba(202, 189, 161, 0.25);
+
 }
 
 .nav-arrow:disabled {
@@ -551,7 +744,7 @@
 .page-counter {
   font-size: 14px;
   font-weight: bold;
-  color: rgba(139, 69, 19, 1);
+  color: rgba(27, 42, 65, 0.8);
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
   margin-bottom: 4px;
 }
@@ -571,23 +764,260 @@
 }
 
 .page-dot:hover {
-  background: rgba(139, 69, 19, 0.7);
+  background: rgba(27, 42, 65, 0.8);
   transform: scale(1.2);
 }
 
 .page-dot.active {
-  background: rgba(139, 69, 19, 1);
+  background: rgba(27, 42, 65, 0.8);
   transform: scale(1.3);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Footer estilo Harry Potter */
 .footer-container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #daac01;
   padding-top: 5vh;
   padding-bottom: 3vh;
   padding-left: 4rem;
   padding-right: 4rem;
-  display: flex; 
-  flex-direction: row; 
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border-top: 3px solid #daac01;
+  box-shadow: 0 -8px 32px rgba(212, 175, 55, 0.2),
+    inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  margin: 0;
+}
+
+.footer-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #d4af37, #b8860b, #ffd700, #daa520);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+
+.footer-content {
+  display: contents;
+}
+
+.footer-info {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.footer-info p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #daac01;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.footer-info strong {
+  color: #daac01;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.footer-team {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.8rem;
+}
+
+.team-info {
+  text-align: right;
+  color: #f7d566;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+  color: #1a1a2e;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.github-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  padding: 2px;
+  background: linear-gradient(135deg, #d4af37, #ffd700, #b8860b);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.github-link:hover {
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: #1a1a2e;
+}
+
+.github-link:hover::before {
+  opacity: 1;
+}
+
+.github-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Responsive - mantener original */
+@media (max-width: 768px) {
+  .footer-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .footer-team {
+    align-items: center;
+  }
+
+  .team-info {
+    text-align: center;
+  }
+}
+
+/* Efectos mágicos estilo Harry Potter */
+.footer-container::after {
+  content: "";
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.1) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: magicalGlow 8s ease-in-out infinite;
+}
+
+@keyframes magicalGlow {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+/* Partículas doradas flotantes */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #d4af37;
+  border-radius: 50%;
+  animation: goldenSparkle 3s infinite;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
+}
+
+.sparkle:nth-child(1) {
+  top: 25%;
+  left: 15%;
+  animation-delay: 0s;
+}
+.sparkle:nth-child(2) {
+  top: 70%;
+  left: 85%;
+  animation-delay: 1s;
+  width: 4px;
+  height: 4px;
+}
+.sparkle:nth-child(3) {
+  top: 45%;
+  left: 25%;
+  animation-delay: 2s;
+  width: 5px;
+  height: 5px;
+}
+
+@keyframes goldenSparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+/* Líneas decorativas como pergamino */
+.footer-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #d4af37 20%,
+    #ffd700 40%,
+    #d4af37 60%,
+    #b8860b 80%,
+    transparent
+  );
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
 }
 
 /* Animaciones para el libro */
@@ -738,11 +1168,1087 @@
   animation: fadeIn 0.5s forwards;
 }
 
-@media screen and (min-width: 1000px) and (max-width: 1440px) {
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+  .book-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .book-pages {
+    position: absolute;
+    top: 18%;
+    left: 11%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    margin: -5vh 8vw;
+  }
+
+  .book-page {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-left: 3vw;
+  }
+
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 160px));
+    gap: 10px 0px;
+    grid-auto-rows: 438px;
+    align-items: flex-end;
+    max-width: 50vw;
+  }
+
+  .personaje-container {
+    width: 6rem;
+    height: 11.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .superpuesto {
+    position: relative;
+  }
+
+  .personaje {
+    position: absolute;
+    z-index: 1;
+    width: 30vw;
+    height: 26vh;
+  }
+
+  .casa {
+    position: absolute;
+    top: 3rem;
+    left: 1.2rem;
+    height: 50px;
+    z-index: 2;
+  }
+
+  .casa_hp {
+    left: 1.35rem;
+    top: 3.6rem;
+  }
+
+  .casa_mp {
+    left: 1.1rem;
+    top: 4rem;
+  }
+
+  .sombrero {
+    position: absolute;
+    top: 0.3rem;
+    left: 2.4rem;
+    width: 2.5vw;
+    z-index: 2;
+  }
+
+  .sombrero_hp {
+    left: 2.5rem;
+    top: 0.8rem;
+  }
+
+  .sombrero_mp {
+    left: 2.2rem;
+    top: 1.2rem;
+  }
+
+  .libros {
+    position: static;
+    margin-bottom: 0;
+    margin-right: -65px;
+    left: auto;
+    top: auto;
+    width: 3vw;
+  }
+
+  .libros_hp {
+    margin-right: -5.9vw;
+  }
+
+  .libros_mp {
+    margin-right: -5vw;
+  }
+
+  .gato {
+    position: absolute;
+    top: 6.9rem;
+    left: 8px;
+    z-index: 0;
+    width: 6vw;
+  }
+
+  .phoenix {
+    position: absolute;
+    top: 1.2rem;
+    left: 3rem;
+    z-index: 0;
+    height: 70px;
+  }
+
+  .lechuza {
+    position: absolute;
+    top: 4vh;
+    left: 5.2vw;
+    transform: scaleX(-1);
+    z-index: 0;
+    width: 48px;
+  }
+
+  .rata {
+    position: absolute;
+    top: 2.4rem;
+    left: 3.7rem;
+    z-index: 0;
+    width: 20px;
+  }
+
+  .rata_hp {
+    top: 2.9rem;
+    left: 3.8rem;
+  }
+
+  .sapo {
+    position: absolute;
+    top: 2.5rem;
+    left: 3.6rem;
+    z-index: 0;
+    width: 25px;
+    transform: rotate(25deg);
+  }
+
+  .personaje-fantasma {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+  }
+
+  .brillo-varita {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Posiciones específicas según el tipo de personaje */
+  .brillo-varita-principal-hombre {
+    top: -0.2rem;
+    right: 2rem;
+    transform: rotate(-20deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-hombre {
+    top: 3.2rem;
+    right: 3.4rem;
+    transform: rotate(-35deg) scale(0.7);
+  }
+
+  .brillo-varita-principal-mujer {
+    top: -0.2rem;
+    right: 1.4rem;
+    transform: rotate(-30deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-mujer {
+    top: 3.4rem;
+    right: 3.2rem;
+    transform: rotate(-40deg) scale(0.7);
+  }
+
   .nombre-personaje {
     text-align: center;
     padding: 0 55px 0 0;
     font-size: 9px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1440px) {
+  .book-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .book-pages {
+    position: absolute;
+    top: 20%;
+    left: 11%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    margin: -5vh 8vw;
+  }
+
+  .book-page {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-left: 3vw;
+  }
+
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 180px));
+    gap: 32px 0px;
+    grid-auto-rows: 438px;
+    align-items: flex-end;
+    max-width: 50vw;
+  }
+
+  .personaje-container {
+    width: 6rem;
+    height: 11.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .superpuesto {
+    position: relative;
+  }
+
+  .personaje {
+    position: absolute;
+    z-index: 1;
+    width: 30vw;
+    height: 26vh;
+  }
+
+  .casa {
+    position: absolute;
+    top: 1.8rem;
+    left: 1.3rem;
+    width: 70px;
+    height: 60px;
+    z-index: 2;
+  }
+
+  .casa_hp {
+    left: 1.5rem;
+    top: 2.5rem;
+  }
+
+  .casa_mp {
+    left: 1.1rem;
+    top: 2.8rem;
+  }
+
+  .sombrero {
+    position: absolute;
+    top: -1.3rem;
+    left: 2.2rem;
+    width: 2.5vw;
+    z-index: 2;
+  }
+
+  .sombrero_hp {
+    left: 2.5rem;
+    top: -0.6rem;
+  }
+
+  .sombrero_mp {
+    left: 2.2rem;
+    top: -0.2rem;
+  }
+
+  .libros {
+    position: static;
+    margin-bottom: 0;
+    margin-right: -65px;
+    left: auto;
+    top: auto;
+    width: 3vw;
+  }
+
+  .libros_hp {
+    margin-right: -5.9vw;
+  }
+
+  .libros_mp {
+    margin-right: -5vw;
+  }
+
+  .gato {
+    position: absolute;
+    top: 6.1rem;
+    left: 2px;
+    z-index: 0;
+    width: 6vw;
+  }
+
+  .phoenix {
+    position: absolute;
+    top: -0.2rem;
+    left: 4rem;
+    z-index: 0;
+    height: 90px;
+  }
+
+  .lechuza {
+    position: absolute;
+    top: -1vh;
+    left: 4.5vw;
+    transform: scaleX(-1);
+    z-index: 0;
+    width: 48px;
+  }
+
+  .rata {
+    position: absolute;
+    top: 1.2rem;
+    left: 3.8rem;
+    z-index: 0;
+    width: 24px;
+  }
+
+  .rata_hp {
+    top: 0.9rem;
+    left: 4rem;
+  }
+
+  .sapo {
+    position: absolute;
+    top: 1.4rem;
+    left: 3.8rem;
+    z-index: 0;
+    width: 25px;
+    transform: rotate(25deg);
+  }
+
+  .personaje-fantasma {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+  }
+
+  .brillo-varita {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Posiciones específicas según el tipo de personaje */
+  .brillo-varita-principal-hombre {
+    top: -2rem;
+    right: 2rem;
+    transform: rotate(-20deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-hombre {
+    top: 2.2rem;
+    right: 3.7rem;
+    transform: rotate(-35deg) scale(0.7);
+  }
+
+  .brillo-varita-principal-mujer {
+    top: -1.9rem;
+    right: 1.3rem;
+    transform: rotate(-30deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-mujer {
+    top: 1.8rem;
+    right: 3.4rem;
+    transform: rotate(-40deg) scale(0.7);
+  }
+
+  .nombre-personaje {
+    text-align: center;
+    padding: 0 80px 0 0;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1600px) {
+  .book-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .book-pages {
+    top: 17vh;
+    left: 11%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    margin: -5vh 8vw;
+  }
+
+  .book-page {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-left: 4vw;
+  }
+
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 200px));
+    gap: 20px 5px;
+    grid-auto-rows: 438px;
+    align-items: flex-end;
+    max-width: 50vw;
+  }
+
+  .personaje-container {
+    position: relative;
+    width: 6rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .personaje {
+    position: absolute;
+    top: 10%;
+    z-index: 1;
+    width: 32vw;
+    height: 28vh;
+  }
+
+  .casa {
+    position: absolute;
+    top: 25%;
+    left: 1.3rem;
+    width: 70px;
+    height: 70px;
+    z-index: 2;
+  }
+
+  .casa_hp {
+    left: 1.6rem;
+    top: 1.8rem;
+  }
+
+  .casa_mp {
+    left: 1.1rem;
+    top: 2.4rem;
+  }
+
+  .sombrero {
+    position: absolute;
+    top: 1%;
+    left: 2.2rem;
+    width: 2.5vw;
+    z-index: 2;
+  }
+
+  .sombrero_hp {
+    left: 2.5rem;
+    top: -1.5rem;
+  }
+
+  .sombrero_mp {
+    left: 2rem;
+    top: -1rem;
+  }
+
+  .libros {
+    position: static;
+    margin-bottom: 0;
+    margin-right: -90px;
+    left: auto;
+    top: auto;
+    width: 3vw;
+  }
+
+  .libros_hp {
+    margin-right: -5.9vw;
+  }
+
+  .libros_mp {
+    margin-right: -5vw;
+  }
+
+  .gato {
+    position: absolute;
+    top: 6.8rem;
+    left: -9px;
+    z-index: 0;
+    width: 6vw;
+  }
+
+  .phoenix {
+    position: absolute;
+    top: -4rem;
+    left: 4.5rem;
+    z-index: 0;
+    width: 160px;
+    height: 160px;
+  }
+
+  .lechuza {
+    position: absolute;
+    top: -2vh;
+    left: 4.4vw;
+    transform: scaleX(-1);
+    z-index: 0;
+    width: 60px;
+  }
+
+  .rata {
+    position: absolute;
+    top: 0.2rem;
+    left: 3.8rem;
+    z-index: 0;
+    width: 30px;
+  }
+
+  .rata_hp {
+    top: 0.9rem;
+    left: 4rem;
+  }
+
+  .sapo {
+    position: absolute;
+    top: 0.6rem;
+    left: 4rem;
+    z-index: 0;
+    width: 30px;
+    transform: rotate(25deg);
+  }
+
+  .personaje-fantasma {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+  }
+
+  .brillo-varita {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Posiciones específicas según el tipo de personaje */
+  .brillo-varita-principal-hombre {
+    top: -3rem;
+    right: 1.5rem;
+    transform: rotate(-20deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-hombre {
+    top: 2.2rem;
+    right: 3.7rem;
+    transform: rotate(-35deg) scale(0.7);
+  }
+
+  .brillo-varita-principal-mujer {
+    top: -2.9rem;
+    right: 1rem;
+    transform: rotate(-30deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-mujer {
+    top: 1.8rem;
+    right: 3.4rem;
+    transform: rotate(-40deg) scale(0.7);
+  }
+
+  .nombre-personaje {
+    text-align: center;
+    padding: 0 80px 0 0;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1800px) {
+  .book-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .book-pages {
+    position: absolute;
+    top: 21%;
+    left: 11%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    margin: -5vh 8vw;
+  }
+
+  .book-page {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-left: 4vw;
+  }
+
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 200px));
+    gap: 60px 40px;
+    grid-auto-rows: 438px;
+    align-items: flex-end;
+    max-width: 50vw;
+  }
+
+  .personaje-container {
+    width: 6rem;
+    height: 14.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .superpuesto {
+    position: relative;
+  }
+
+  .personaje {
+    position: absolute;
+    z-index: 1;
+    width: 32vw;
+    height: 28vh;
+  }
+
+  .casa {
+    position: absolute;
+    top: 1.7rem;
+    left: 1.4rem;
+    width: 70px;
+    height: 70px;
+    z-index: 2;
+  }
+
+  .casa_hp {
+    left: 1.6rem;
+    top: 2.5rem;
+  }
+
+  .casa_mp {
+    left: 1.1rem;
+    top: 3.1rem;
+  }
+
+  .sombrero {
+    position: absolute;
+    top: -2.3rem;
+    left: 2.2rem;
+    width: 2.5vw;
+    z-index: 2;
+  }
+
+  .sombrero_hp {
+    left: 2.5rem;
+    top: -1.5rem;
+  }
+
+  .sombrero_mp {
+    left: 1.7rem;
+    top: -0.6rem;
+  }
+
+  .libros {
+    position: static;
+    margin-bottom: 0;
+    margin-right: -90px;
+    left: auto;
+    top: auto;
+    width: 3vw;
+  }
+
+  .libros_hp {
+    margin-right: -5.9vw;
+  }
+
+  .libros_mp {
+    margin-right: -5vw;
+  }
+
+  .gato {
+    position: absolute;
+    top: 8rem;
+    left: -9px;
+    z-index: 0;
+    width: 6vw;
+  }
+
+  .phoenix {
+    position: absolute;
+    top: -4rem;
+    left: 4.5rem;
+    z-index: 0;
+    width: 160px;
+    height: 160px;
+  }
+
+  .lechuza {
+    position: absolute;
+    top: -2vh;
+    left: 4.4vw;
+    transform: scaleX(-1);
+    z-index: 0;
+    width: 60px;
+  }
+
+  .rata {
+    position: absolute;
+    top: 0.6rem;
+    left: 3.8rem;
+    z-index: 0;
+    width: 35px;
+  }
+
+  .rata_hp {
+    top: 1.4rem;
+  }
+
+  .sapo {
+    position: absolute;
+    top: 1rem;
+    left: 4rem;
+    z-index: 0;
+    width: 30px;
+    transform: rotate(25deg);
+  }
+
+  .personaje-fantasma {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+  }
+
+  .brillo-varita {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Posiciones específicas según el tipo de personaje */
+  .brillo-varita-principal-hombre {
+    top: -3rem;
+    right: 1.5rem;
+    transform: rotate(-20deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-hombre {
+    top: 2.2rem;
+    right: 3.7rem;
+    transform: rotate(-35deg) scale(0.7);
+  }
+
+  .brillo-varita-principal-mujer {
+    top: -2.6rem;
+    right: 1rem;
+    transform: rotate(-30deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-mujer {
+    top: 2.5rem;
+    right: 3.6rem;
+    transform: rotate(-40deg) scale(0.7);
+  }
+
+  .nombre-personaje {
+    text-align: center;
+    padding: 0 80px 0 0;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 1800px) and (max-width: 2000px) {
+  .book-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-background {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .book-pages {
+    position: absolute;
+    top: 21%;
+    left: 11%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    margin: -5vh 8vw;
+  }
+
+  .book-page {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-left: 4vw;
+  }
+
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 200px));
+    gap: 60px 40px;
+    grid-auto-rows: 438px;
+    align-items: flex-end;
+    max-width: 50vw;
+  }
+
+  .personaje-container {
+    width: 6rem;
+    height: 14.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .superpuesto {
+    position: relative;
+  }
+
+  .personaje {
+    position: absolute;
+    z-index: 1;
+    width: 32vw;
+    height: 28vh;
+  }
+
+  .casa {
+    position: absolute;
+    top: 0.2rem;
+    left: 1.4rem;
+    width: 70px;
+    height: 70px;
+    z-index: 2;
+  }
+
+  .casa_hp {
+    left: 1.6rem;
+    top: 1rem;
+  }
+
+  .casa_mp {
+    left: 1.1rem;
+    top: 1.5rem;
+  }
+
+  .sombrero {
+    position: absolute;
+    top: -4.2rem;
+    left: 2.2rem;
+    width: 2.5vw;
+    z-index: 2;
+  }
+
+  .sombrero_hp {
+    left: 2.5rem;
+    top: -3.2rem;
+  }
+
+  .sombrero_mp {
+    left: 1.7rem;
+    top: -2.6rem;
+  }
+
+  .libros {
+    position: static;
+    margin-bottom: 0;
+    margin-right: -90px;
+    left: auto;
+    top: auto;
+    width: 3vw;
+  }
+
+  .libros_hp {
+    margin-right: -5.9vw;
+  }
+
+  .libros_mp {
+    margin-right: -5vw;
+  }
+
+  .gato {
+    position: absolute;
+    top: 8rem;
+    left: -9px;
+    z-index: 0;
+    width: 6vw;
+  }
+
+  .phoenix {
+    position: absolute;
+    top: -4rem;
+    left: 4.5rem;
+    z-index: 0;
+    width: 160px;
+    height: 160px;
+  }
+
+  .lechuza {
+    position: absolute;
+    top: -4vh;
+    left: 4vw;
+    transform: scaleX(-1);
+    z-index: 0;
+    width: 60px;
+  }
+
+  .rata {
+    position: absolute;
+    top: -0.9rem;
+    left: 4.2rem;
+    z-index: 0;
+    width: 35px;
+  }
+
+  .rata_hp {
+    top: 0.2rem;
+  }
+
+  .sapo {
+    position: absolute;
+    top: -0.45rem;
+    left: 4.3rem;
+    z-index: 0;
+    width: 35px;
+    transform: rotate(25deg);
+  }
+
+  .personaje-fantasma {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 50%
+    );
+  }
+
+  .brillo-varita {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Posiciones específicas según el tipo de personaje */
+  .brillo-varita-principal-hombre {
+    top: -5rem;
+    right: 1.5rem;
+    transform: rotate(-20deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-hombre {
+    top: 1.2rem;
+    right: 3.7rem;
+    transform: rotate(-35deg) scale(0.7);
+  }
+
+  .brillo-varita-principal-mujer {
+    top: -5.2rem;
+    right: 1rem;
+    transform: rotate(-30deg) scale(0.8);
+  }
+
+  .brillo-varita-secundario-mujer {
+    top: 1.5rem;
+    right: 3.6rem;
+    transform: rotate(-40deg) scale(0.7);
+  }
+
+  .nombre-personaje {
+    text-align: center;
+    padding: 0 80px 0 0;
+    font-size: 12px;
     font-weight: bold;
     margin-top: 10px;
   }
