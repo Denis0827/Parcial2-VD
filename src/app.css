@@ -1661,21 +1661,20 @@ body {
 
   .casa {
     position: absolute;
-    top: 25%;
+    top: 23%;
     left: 1.3rem;
-    width: 70px;
-    height: 70px;
+    height: 4.1rem;
     z-index: 2;
   }
 
   .casa_hp {
     left: 1.6rem;
-    top: 1.8rem;
+    top: 4.1rem;
   }
 
   .casa_mp {
     left: 1.1rem;
-    top: 2.4rem;
+    top: 4.7rem;
   }
 
   .sombrero {
@@ -1688,12 +1687,12 @@ body {
 
   .sombrero_hp {
     left: 2.5rem;
-    top: -1.5rem;
+    top: 0.7rem;
   }
 
   .sombrero_mp {
     left: 2rem;
-    top: -1rem;
+    top: 1.4rem;
   }
 
   .libros {
@@ -1715,7 +1714,7 @@ body {
 
   .gato {
     position: absolute;
-    top: 6.8rem;
+    top: 8.8rem;
     left: -9px;
     z-index: 0;
     width: 6vw;
@@ -1723,7 +1722,7 @@ body {
 
   .phoenix {
     position: absolute;
-    top: -4rem;
+    top: 0.1rem;
     left: 4.5rem;
     z-index: 0;
     width: 160px;
@@ -1732,8 +1731,8 @@ body {
 
   .lechuza {
     position: absolute;
-    top: -2vh;
-    left: 4.4vw;
+    top: 2.3vh;
+    left: 4.7vw;
     transform: scaleX(-1);
     z-index: 0;
     width: 60px;
@@ -1741,71 +1740,48 @@ body {
 
   .rata {
     position: absolute;
-    top: 0.2rem;
+    top: 2.7rem;
     left: 3.8rem;
     z-index: 0;
     width: 30px;
   }
 
   .rata_hp {
-    top: 0.9rem;
+    top: 3.4rem;
     left: 4rem;
   }
 
   .sapo {
     position: absolute;
-    top: 0.6rem;
+    top: 3.2rem;
     left: 4rem;
     z-index: 0;
     width: 30px;
     transform: rotate(25deg);
   }
 
-  .personaje-fantasma {
-    -webkit-mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
-    mask-image: linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 1) 50%
-    );
-  }
-
-  .brillo-varita {
-    position: absolute;
-    width: 4vw;
-    height: 4vw;
-    pointer-events: none;
-    z-index: 10;
-  }
-
   /* Posiciones específicas según el tipo de personaje */
   .brillo-varita-principal-hombre {
-    top: -3rem;
-    right: 1.5rem;
+    top: -0.8rem;
+    right: 1.7rem;
     transform: rotate(-20deg) scale(0.8);
   }
 
   .brillo-varita-secundario-hombre {
-    top: 2.2rem;
+    top: 4.2rem;
     right: 3.7rem;
     transform: rotate(-35deg) scale(0.7);
   }
 
   .brillo-varita-principal-mujer {
-    top: -2.9rem;
+    top: -0.4rem;
     right: 1rem;
     transform: rotate(-30deg) scale(0.8);
   }
 
   .brillo-varita-secundario-mujer {
-    top: 1.8rem;
-    right: 3.4rem;
+    top: 4.2rem;
+    right: 3.6rem;
     transform: rotate(-40deg) scale(0.7);
   }
 
@@ -1882,14 +1858,13 @@ body {
     position: absolute;
     top: 1.7rem;
     left: 1.4rem;
-    width: 70px;
-    height: 70px;
+    height: 4.5rem;
     z-index: 2;
   }
 
   .casa_hp {
-    left: 1.6rem;
-    top: 2.5rem;
+    left: 1.7rem;
+    top: 2.2rem;
   }
 
   .casa_mp {
@@ -1911,7 +1886,7 @@ body {
   }
 
   .sombrero_mp {
-    left: 1.7rem;
+    left: 1.8rem;
     top: -0.6rem;
   }
 
