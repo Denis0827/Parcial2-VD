@@ -463,7 +463,7 @@ function aplicarFiltro(categoria, valor) {
               <img style="height: 4vh;" src={imagenMascotas["Rata"] || "/placeholder.svg"} alt="Rata" />
               <img style="height: 12vh;" src={imagenMascotas["Phoenix"] || "/placeholder.svg"} alt="Phoenix" />
             </div>
-            <div class="fila" style="gap: 1.8rem; font-size: 14px;">
+            <div class="fila" style="gap: 1.2rem; font-size: 14px;">
               <p>Lechuza</p>
               <p>Gato</p>
               <p>Sapo</p>
